@@ -5,13 +5,19 @@ body {
 }
 
 #portfolio-container {
+  display: flex;
+  flex-direction: column;
   height: 100vh; /* One full viewport height */
-  overflow: hidden;
+  overflow-y: scroll; /* Enable vertical scrolling */
 }
 
 .portfolio-page {
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   opacity: 1; /* Initial opacity */
   transition: opacity 0.5s ease-in-out; /* Fade transition effect */
 }
