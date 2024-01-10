@@ -1,15 +1,16 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const images = document.querySelectorAll('.image-container img');
-  const container = document.querySelector('.image-container');
-  let currentImageIndex = 0;
+const container = document.querySelector('.image-container');
+        let scrollPosition = 0;
 
-  function handleScroll() {
-    const scrollPosition = window.scrollY;
-    const newImageIndex = Math.floor(scrollPosition / window.innerHeight);
+        window.addEventListener('scroll', () => {
+            const newScrollPosition = window.scrollY;
 
-    const translateY = -newImageIndex * 100;
-    container.style.transform = `translateY(${translateY}vh)`;
-  }
+            if (newScrollPosition > scrollPosition) {
+                // Scrolling down, shuffle images
+                container.style.transform = 'translateY(-16.666%)'; // Move the container up by one image's height
+            } else {
+                // Scrolling up, shuffle images
+                container.style.transform = 'translateY(0)'; // Reset the container position
+            }
 
-  window.addEventListener('scroll', handleScroll);
-});
+            scrollPosition = newScrollPosition;
+        });
