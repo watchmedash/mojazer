@@ -4,13 +4,14 @@ body {
 }
 
 #portfolio-container {
-  display: block;
+  display: block; /* Ensure it behaves like a block-level element */
 }
 
 .portfolio-page {
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
   text-align: center; /* Center the image horizontally */
+  display: block; /* Ensure it behaves like a block-level element */
 }
 
 img {
