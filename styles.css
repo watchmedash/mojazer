@@ -1,19 +1,22 @@
-body {
+body, html {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
-.portfolio-page {
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
+.image-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Maintain image aspect ratio */
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }

@@ -1,19 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let currentPage = 0;
-  const totalPages = document.querySelectorAll(".portfolio-page").length;
+document.addEventListener('DOMContentLoaded', function () {
+  const images = document.querySelectorAll('.image-container img');
+  let currentImageIndex = 0;
 
-  function updateTransform() {
-    const translateValue = `translateY(-${currentPage * 100}vh)`;
-    document.getElementById("portfolio-container").style.transform = translateValue;
+  function handleScroll() {
+    const scrollPosition = window.scrollY;
+    const newImageIndex = Math.floor(scrollPosition / window.innerHeight);
+
+    if (newImageIndex !== currentImageIndex) {
+      images[currentImageIndex].style.opacity = 0;
+      images[newImageIndex].style.opacity = 1;
+      currentImageIndex = newImageIndex;
+    }
   }
 
-  window.addEventListener("wheel", function (event) {
-    if (event.deltaY > 0 && currentPage < totalPages - 1) {
-      currentPage++;
-    } else if (event.deltaY < 0 && currentPage > 0) {
-      currentPage--;
-    }
-
-    updateTransform();
-  });
+  window.addEventListener('scroll', handleScroll);
 });
