@@ -1,31 +1,28 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  overflow: hidden; /* Hide scroll bars */
+  overflow: hidden;
 }
 
 #portfolio-container {
   display: flex;
   height: 100vh; /* One full viewport height */
-  overflow: hidden; /* Hide content overflowing the viewport */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* Snap to each section */
 }
 
 .portfolio-page {
-  flex: 1;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f0f0f0;
-  transition: transform 0.5s ease-in-out;
-}
-
-.image-wrapper {
-  max-width: 100%;
-  max-height: 100%;
-  overflow: hidden; /* Ensure the image does not overflow its container */
+  scroll-snap-align: start; /* Snap to the start of each section */
 }
 
 img {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Maintain image aspect ratio */
 }
