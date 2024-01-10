@@ -1,21 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let currentPage = 1;
+  let currentPage = 0;
   const totalPages = document.querySelectorAll(".portfolio-page").length;
 
-  function updateOpacity() {
-    const pages = document.querySelectorAll(".portfolio-page");
-    pages.forEach((page, index) => {
-      page.style.opacity = index + 1 === currentPage ? "1" : "0";
-    });
+  function updateTransform() {
+    const translateValue = `translateY(-${currentPage * 100}vh)`;
+    document.getElementById("portfolio-container").style.transform = translateValue;
   }
 
   window.addEventListener("wheel", function (event) {
-    if (event.deltaY > 0 && currentPage < totalPages) {
+    if (event.deltaY > 0 && currentPage < totalPages - 1) {
       currentPage++;
-    } else if (event.deltaY < 0 && currentPage > 1) {
+    } else if (event.deltaY < 0 && currentPage > 0) {
       currentPage--;
     }
 
-    updateOpacity();
+    updateTransform();
   });
 });
