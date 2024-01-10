@@ -14,4 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.addEventListener('scroll', handleScroll);
+
+  // Trigger initial check to set the correct image based on initial scroll position
+  handleScroll();
 });
