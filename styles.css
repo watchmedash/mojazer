@@ -5,16 +5,14 @@ body {
 }
 
 #portfolio-container {
-  position: relative;
+  display: flex;
   height: 100vh; /* One full viewport height */
+  overflow: hidden;
 }
 
 .portfolio-page {
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
-  position: absolute;
-  top: 0;
-  left: 0;
   opacity: 1; /* Initial opacity */
   transition: opacity 0.5s ease-in-out; /* Fade transition effect */
 }
