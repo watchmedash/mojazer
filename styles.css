@@ -5,7 +5,6 @@ body {
 }
 
 #portfolio-container {
-  display: flex;
   height: 100vh; /* One full viewport height */
   overflow: hidden;
 }
