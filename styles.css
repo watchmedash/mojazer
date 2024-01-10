@@ -4,16 +4,14 @@ body {
 }
 
 #portfolio-container {
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
 .portfolio-page {
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center; /* Center the image horizontally */
+  margin-bottom: 10px; /* Add some spacing between images */
 }
 
 img {
