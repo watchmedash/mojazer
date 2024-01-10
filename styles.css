@@ -1,14 +1,12 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  overflow: hidden;
 }
 
 #portfolio-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* One full viewport height */
-  overflow: hidden;
+  overflow: hidden; /* Hide content overflowing the viewport */
 }
 
 .portfolio-page {
