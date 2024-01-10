@@ -10,32 +10,7 @@
   <meta property="og:url" content="https://mojazer.xyz" />
   <meta property="og:image" content="https://i.postimg.cc/9MpbvPtZ/1.png" />
   <meta property="og:type" content="website">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    .image-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .image-container {
-      box-sizing: border-box;
-    }
-
-    .image-container img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-  </style>
-
+<link rel="stylesheet" href="styles.css">
   <title>Mojazer - Online Portfolio</title>
 </head>
 <body oncontextmenu="return false;">
@@ -44,26 +19,27 @@
     <!-- Add header content if needed -->
   </header>
 
-  <section class="image-gallery">
-    <div class="image-container">
-      <img src="https://i.postimg.cc/9MpbvPtZ/1.png" alt="Mojazer Portfolio Image 1">
+  <div id="portfolio-container">
+      <section class="portfolio-page" id="page1">
+        <img src="https://i.postimg.cc/9MpbvPtZ/1.png" alt="Page 1">
+      </section>
+      <section class="portfolio-page" id="page2">
+        <img src="https://i.postimg.cc/Wbt8HkDq/2.png" alt="Page 2">
+      </section>
+      <section class="portfolio-page" id="page3">
+        <img src="https://i.postimg.cc/fW85CKbh/3.png" alt="Page 3">
+      </section>
+      <section class="portfolio-page" id="page4">
+        <img src="https://i.postimg.cc/xCtGsfnP/4.png" alt="Page 4">
+      </section>
+      <section class="portfolio-page" id="page5">
+        <img src="https://i.postimg.cc/Jzkq1C51/5.png" alt="Page 5">
+      </section>
+      <section class="portfolio-page" id="page6">
+        <img src="https://i.postimg.cc/g2XMnZmb/6.png" alt="Page 6">
+      </section>
     </div>
-    <div class="image-container">
-      <img src="https://i.postimg.cc/Wbt8HkDq/2.png" alt="Mojazer Portfolio Image 2">
-    </div>
-    <div class="image-container">
-      <img src="https://i.postimg.cc/fW85CKbh/3.png" alt="Mojazer Portfolio Image 3">
-    </div>
-    <div class="image-container">
-      <img src="https://i.postimg.cc/xCtGsfnP/4.png" alt="Mojazer Portfolio Image 4">
-    </div>
-    <div class="image-container">
-      <img src="https://i.postimg.cc/Jzkq1C51/5.png" alt="Mojazer Portfolio Image 5">
-    </div>
-    <div class="image-container">
-      <img src="https://i.postimg.cc/g2XMnZmb/6.png" alt="Mojazer Portfolio Image 6">
-    </div>
-  </section>
+    <script src="script.js"></script>
 
 </body>
 </html>
