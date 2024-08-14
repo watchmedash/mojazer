@@ -65,35 +65,9 @@
           </div>
       </div>
   </div>
+  <button id="load-more-button">Load More</button>
 
   <script src="script.js"></script>
-  <script>
-      const closeButton = document.querySelector('.player .close-btn');
-      const player = document.getElementById('movie-player');
-
-      // Show the close button when the player is touched on mobile
-      player.addEventListener('touchstart', () => {
-          closeButton.classList.add('show');
-      });
-
-      // Hide the close button when the player is not interacted with
-      player.addEventListener('touchend', () => {
-          setTimeout(() => {
-              closeButton.classList.remove('show');
-          }, 2000); // Hide after 2 seconds
-      });
-
-      // Also hide the close button when not hovering on desktop
-      player.addEventListener('mouseleave', () => {
-          closeButton.classList.remove('show');
-      });
-
-      // Show the player when clicked (your existing logic here)
-      closeButton.addEventListener('click', () => {
-          player.style.display = 'none';
-          movieIframe.src = '';
-      });
-  </script>
   <script>
       function refreshPage() {
           location.reload(); // Reloads the current page
