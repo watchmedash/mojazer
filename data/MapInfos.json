@@ -1,10 +1,15 @@
 [
 null,
-{"id":1,"expanded":false,"name":"Base","order":1,"parentId":0,"scrollX":2184,"scrollY":1218.6666666666667},
-{"id":2,"expanded":false,"name":"Level 1","order":2,"parentId":0,"scrollX":2184,"scrollY":1218.6666666666667},
-{"id":3,"expanded":true,"name":"Level 2","order":3,"parentId":0,"scrollX":1584,"scrollY":1218},
-{"id":4,"expanded":true,"name":"Level 3","order":4,"parentId":0,"scrollX":1568,"scrollY":640},
-{"id":5,"expanded":true,"name":"Level 4","order":5,"parentId":0,"scrollX":1568,"scrollY":1632},
-{"id":6,"expanded":false,"name":"Level 5","order":6,"parentId":0,"scrollX":816,"scrollY":624},
-{"id":7,"expanded":false,"name":"Level 6","order":7,"parentId":0,"scrollX":816,"scrollY":624}
+{"id":1,"expanded":false,"name":"Base","order":1,"parentId":0,"scrollX":1965.6,"scrollY":1096.8},
+{"id":2,"expanded":true,"name":"Level 1","order":2,"parentId":0,"scrollX":1946.3999999999999,"scrollY":1195.2},
+{"id":3,"expanded":true,"name":"Level 2","order":3,"parentId":2,"scrollX":1946.3999999999999,"scrollY":1255.2},
+{"id":4,"expanded":true,"name":"Level 3","order":4,"parentId":2,"scrollX":1946.3999999999999,"scrollY":1255.2},
+{"id":5,"expanded":true,"name":"Level 4","order":5,"parentId":2,"scrollX":1946.3999999999999,"scrollY":1288.8},
+{"id":6,"expanded":false,"name":"Level 5","order":6,"parentId":2,"scrollX":1946.3999999999999,"scrollY":1240.8},
+{"id":7,"expanded":false,"name":"Level 6","order":7,"parentId":2,"scrollX":1946.3999999999999,"scrollY":1303.2},
+{"id":8,"expanded":false,"name":"Level 7","order":8,"parentId":2,"scrollX":1318.6666666666667,"scrollY":1760},
+{"id":9,"expanded":false,"name":"Level 8","order":9,"parentId":2,"scrollX":1568,"scrollY":1760},
+{"id":10,"expanded":false,"name":"Level 9","order":10,"parentId":2,"scrollX":1946.3999999999999,"scrollY":1303.2},
+{"id":11,"expanded":false,"name":"Level 10","order":11,"parentId":2,"scrollX":1946.3999999999999,"scrollY":1300.8},
+{"id":12,"expanded":false,"name":"FZ","order":12,"parentId":0,"scrollX":1965.6,"scrollY":1096.8}
 ]
