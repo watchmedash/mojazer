@@ -1,0 +1,195 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('https://researchleap.com/wp-content/uploads/2022/11/What-Does-a-Web-Based-Knowledge-Management-Software-Do.jpg') no-repeat center center/cover;
+  color: #333;
+  flex-direction: column;
+  overflow: hidden;
+  text-align: center;
+  background-size: cover;
+}
+
+/* Main container with glass effect */
+.container {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);  /* Semi-transparent white background */
+  backdrop-filter: blur(10px);  /* Apply blur for glass effect */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  width: 450px;
+}
+
+/* Header with clean font and subtle shadow */
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: 'Unica One', sans-serif;
+  color: #fff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+}
+
+/* Timer, Lives, and Score with clean design */
+.timer, .lives, .score {
+  font-size: 1.3rem;
+  margin: 10px 0;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.5);  /* Light white background for contrast */
+  padding: 8px 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.timer {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.lives {
+  background: rgba(255, 0, 0, 0.5);  /* Red background for lives */
+}
+
+.score {
+  background: rgba(0, 255, 0, 0.5);  /* Green background for score */
+}
+
+/* Simple question style */
+.question {
+  font-size: 1.7rem;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Options container with vertical layout */
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* Updated button style with subtle white theme */
+.button {
+  background-color: #fff;  /* White background */
+  color: #333;  /* Dark text color */
+  font-size: 1.2rem;
+  padding: 12px;
+  border: 1px solid #ccc;  /* Soft gray border */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: #f1f1f1;  /* Light gray on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Controls section */
+.controls {
+  margin-top: 20px;
+}
+
+/* Notification styling */
+.notification {
+  position: fixed;
+  top: 10%;  /* Move it higher on the page */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.notification.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* Shake effect for wrong answers */
+.shake {
+  animation: shake 0.3s ease-out;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
+}
+
+/* Red and Green button highlight for correct/wrong answers */
+.red {
+  background-color: #f44336;
+}
+
+.green {
+  background-color: #4CAF50;
+}
+
+#restartBtn {
+  margin-top: 20px;
+  width: 100%;
+  background-color: white;  /* White background */
+  padding: 15px;
+  font-size: 1.4rem;
+  color: #7f8c8d;  /* Grey text */
+  border: 2px solid #7f8c8d;  /* Grey border */
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#restartBtn:hover {
+  background-color: #ecf0f1;  /* Light grey background on hover */
+  color: #34495e;  /* Dark grey text on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Total score styling */
+#totalScore {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+#timer, #lives, #score {
+  display: none;
+}
+
+#heroImage {
+  width: 150px;  /* Adjust size */
+  height: auto;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
