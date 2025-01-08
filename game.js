@@ -60,6 +60,10 @@ function startQuestionTimer() {
       clearInterval(timerInterval);
       lives--;
       showNotification("Time's up! Moving to the next question.", "red");
+      document.body.classList.add("shake");
+      setTimeout(() => {
+        document.body.classList.remove("shake");
+      }, 500);
       nextQuestion();
     }
   }, 1000);
@@ -96,7 +100,11 @@ function checkAnswer(selectedIndex, correctAnswer, selectedBtn) {
     }
   } else {
     lives--;
-    showNotification(`Wrong! The correct answer is: ${questions[currentQuestionIndex].options[correctIndex]}.`, "red");
+    showNotification(`The correct answer is: ${questions[currentQuestionIndex].options[correctIndex]}.`, "red");
+    document.body.classList.add("shake");
+    setTimeout(() => {
+      document.body.classList.remove("shake");
+    }, 500);
   }
 
   clearInterval(timerInterval);
@@ -141,7 +149,7 @@ function useHint() {
   } else if (hints <= 0) {
     showNotification("No hints left!", "orange");
   } else {
-    showNotification("You can't use more than 2 hints per question!", "orange");
+    showNotification("Only 2 hints per question!", "orange");
   }
 }
 
@@ -153,7 +161,7 @@ function showNotification(message, color) {
 
   setTimeout(() => {
     notification.classList.remove('show');
-  }, 2000);
+  }, 1000);
 }
 
 function endGame() {
