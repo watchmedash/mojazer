@@ -4,11 +4,13 @@ let currentQuestionIndex = 0;
 let questionTimer = 30;
 let timerInterval;
 let correctAnswers = 0;
+let consecutiveCorrectAnswers = 0;
 let hints = 10;
 let hintsUsed = 0;
 let maxHintsPerQuestion = 2;
 let questions = [];
 
+// Shuffle function
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -17,9 +19,7 @@ function shuffleArray(array) {
   return array;
 }
 
-Promise.all([
-  fetch('questions.json').then((response) => response.json())
-])
+Promise.all([fetch('questions.json').then((response) => response.json())])
   .then(([loadedQuestions]) => {
     questions = shuffleArray(loadedQuestions);
     document.getElementById("startBtn").disabled = false;
@@ -32,6 +32,7 @@ function startGame() {
   lives = 5;
   score = 0;
   correctAnswers = 0;
+  consecutiveCorrectAnswers = 0;
   hints = 10;
   hintsUsed = 0;
 
@@ -47,6 +48,7 @@ function startGame() {
   startQuestionTimer();
 }
 
+// Start the question timer
 function startQuestionTimer() {
   questionTimer = 30;
   hintsUsed = 0;
@@ -69,6 +71,7 @@ function startQuestionTimer() {
   }, 1000);
 }
 
+// Show question and options
 function showQuestion(index) {
   const questionObj = questions[index];
   document.getElementById("question").innerText = questionObj.question;
@@ -91,6 +94,7 @@ function checkAnswer(selectedIndex, correctAnswer, selectedBtn) {
   if (selectedIndex === correctIndex) {
     correctAnswers++;
     score++;
+    consecutiveCorrectAnswers++;
     showNotification("Correct!", "green");
 
     if (correctAnswers % 4 === 0) {
@@ -98,8 +102,16 @@ function checkAnswer(selectedIndex, correctAnswer, selectedBtn) {
       showNotification("You earned 3 extra hints!", "blue");
       document.getElementById("hintBtn").innerText = `Hints: ${hints}`;
     }
+
+    if (consecutiveCorrectAnswers === 5) {
+      lives += 2;
+      showNotification("You earned 2 extra lives!", "blue");
+      consecutiveCorrectAnswers = 0;
+    }
+
   } else {
     lives--;
+    consecutiveCorrectAnswers = 0;
     showNotification(`The correct answer is: ${questions[currentQuestionIndex].options[correctIndex]}.`, "red");
     document.body.classList.add("shake");
     setTimeout(() => {
@@ -126,11 +138,13 @@ function nextQuestion() {
   updateUI();
 }
 
+// Update the UI with current lives and score
 function updateUI() {
   document.getElementById("lives").innerText = `Lives: ${lives}`;
   document.getElementById("score").innerText = `Score: ${score}`;
 }
 
+// Use a hint
 function useHint() {
   if (hints > 0 && hintsUsed < maxHintsPerQuestion) {
     hints--;
@@ -164,6 +178,7 @@ function showNotification(message, color) {
   }, 1000);
 }
 
+// End the game
 function endGame() {
   clearInterval(timerInterval);
 
@@ -190,6 +205,7 @@ function endGame() {
   showNotification(`Game Over!`, "red");
 }
 
+// Restart the game
 function restartGame() {
   location.reload();
 }
