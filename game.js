@@ -1,9 +1,12 @@
 let lives = 5;
 let score = 0;
 let currentQuestionIndex = 0;
-let timer = 60;
+let questionTimer = 30;
 let timerInterval;
 let correctAnswers = 0;
+let hints = 10;
+let hintsUsed = 0;
+let maxHintsPerQuestion = 2;
 let questions = [];
 
 function shuffleArray(array) {
@@ -26,29 +29,38 @@ Promise.all([
   });
 
 function startGame() {
-  lives = 10;
+  lives = 5;
   score = 0;
   correctAnswers = 0;
-  currentQuestionIndex = 0;
-  timer = 60;
+  hints = 10;
+  hintsUsed = 0;
 
   document.getElementById("startBtn").style.display = 'none';
+  document.getElementById("hintBtn").style.display = 'block';
+  document.getElementById("hintBtn").innerText = `Hints: ${hints}`;
+
   document.getElementById("timer").style.display = 'block';
   document.getElementById("lives").style.display = 'block';
   document.getElementById("score").style.display = 'block';
 
   showQuestion(currentQuestionIndex);
-  updateUI();
-  startTimer();
+  startQuestionTimer();
 }
 
-function startTimer() {
+function startQuestionTimer() {
+  questionTimer = 30;
+  hintsUsed = 0;
+  clearInterval(timerInterval);
+
   timerInterval = setInterval(() => {
-    timer--;
-    document.getElementById("timer").innerText = `Time: ${timer}s`;
-    if (timer <= 0) {
+    questionTimer--;
+    document.getElementById("timer").innerText = `Time: ${questionTimer}s`;
+
+    if (questionTimer <= 0) {
       clearInterval(timerInterval);
-      endGame();
+      lives--;
+      showNotification("Time's up! Moving to the next question.", "red");
+      nextQuestion();
     }
   }, 1000);
 }
@@ -62,7 +74,7 @@ function showQuestion(index) {
 
   questionObj.options.forEach((option, idx) => {
     const btn = document.createElement('button');
-    btn.classList.add('button');
+    btn.classList.add('button', 'option-btn');
     btn.innerText = option;
     btn.onclick = () => checkAnswer(idx, questionObj.correctAnswer, btn);
     optionsContainer.appendChild(btn);
@@ -74,22 +86,31 @@ function checkAnswer(selectedIndex, correctAnswer, selectedBtn) {
 
   if (selectedIndex === correctIndex) {
     correctAnswers++;
-    score += 1;
-    timer += 15;
+    score++;
     showNotification("Correct!", "green");
+
+    if (correctAnswers % 4 === 0) {
+      hints += 3;
+      showNotification("You earned 3 extra hints!", "blue");
+      document.getElementById("hintBtn").innerText = `Hints: ${hints}`;
+    }
   } else {
     lives--;
     showNotification(`Wrong! The correct answer is: ${questions[currentQuestionIndex].options[correctIndex]}.`, "red");
-    shakeScreen(selectedBtn);
-    highlightAnswer(selectedBtn, correctIndex);
   }
 
+  clearInterval(timerInterval);
+  nextQuestion();
+}
+
+function nextQuestion() {
   currentQuestionIndex++;
 
   if (lives <= 0) {
     endGame();
   } else if (currentQuestionIndex < questions.length) {
     showQuestion(currentQuestionIndex);
+    startQuestionTimer();
   } else {
     endGame();
   }
@@ -102,6 +123,28 @@ function updateUI() {
   document.getElementById("score").innerText = `Score: ${score}`;
 }
 
+function useHint() {
+  if (hints > 0 && hintsUsed < maxHintsPerQuestion) {
+    hints--;
+    hintsUsed++;
+    document.getElementById("hintBtn").innerText = `Hints: ${hints}`;
+
+    const options = document.querySelectorAll('.option-btn');
+    const correctIndex = questions[currentQuestionIndex].correctAnswer.charCodeAt(0) - 65;
+
+    const incorrectOptions = Array.from(options).filter((btn, idx) => idx !== correctIndex && !btn.disabled);
+    if (incorrectOptions.length > 0) {
+      const randomWrong = incorrectOptions[Math.floor(Math.random() * incorrectOptions.length)];
+      randomWrong.disabled = true;
+      randomWrong.style.opacity = '0.5';
+    }
+  } else if (hints <= 0) {
+    showNotification("No hints left!", "orange");
+  } else {
+    showNotification("You can't use more than 2 hints per question!", "orange");
+  }
+}
+
 function showNotification(message, color) {
   const notification = document.getElementById('notification');
   notification.innerText = message;
@@ -110,25 +153,7 @@ function showNotification(message, color) {
 
   setTimeout(() => {
     notification.classList.remove('show');
-  }, 3000);
-}
-
-function shakeScreen(btn) {
-  document.body.classList.add('shake');
-  setTimeout(() => {
-    document.body.classList.remove('shake');
-  }, 500);
-
-  btn.classList.add('red');
-}
-
-function highlightAnswer(selectedBtn, correctIndex) {
-  const buttons = document.querySelectorAll('.button');
-  buttons.forEach((btn) => {
-    if (btn.innerText === questions[currentQuestionIndex].options[correctIndex]) {
-      btn.classList.add('green');
-    }
-  });
+  }, 2000);
 }
 
 function endGame() {
@@ -139,23 +164,24 @@ function endGame() {
   document.getElementById("timer").style.display = 'none';
   document.getElementById("lives").style.display = 'none';
   document.getElementById("score").style.display = 'none';
+  document.getElementById("hintBtn").style.display = 'none';
 
   const totalScore = document.createElement('p');
   totalScore.id = 'totalScore';
-  totalScore.innerText = `Wow, your IQ is: ${100 + score}`;
+  totalScore.innerText = `Your IQ is: ${100 + score}`;
   document.querySelector('.controls').insertBefore(totalScore, document.getElementById("restartBtn"));
 
   const heroImage = document.createElement('img');
-  const heroImageUrl = "https://cdn-icons-png.flaticon.com/512/7551/7551506.png"; // Default image
+  const heroImageUrl = "https://cdn-icons-png.flaticon.com/512/7551/7551506.png";
   heroImage.src = heroImageUrl;
   heroImage.alt = `Hero image for score ${score}`;
-  heroImage.style.width = '150px'; // Optional: Adjust the size
+  heroImage.style.width = '150px';
   document.querySelector('.controls').insertBefore(heroImage, document.getElementById("restartBtn"));
 
   document.getElementById("restartBtn").style.display = 'block';
-  showNotification(`Game Over! Your score: ${score}`, "red");
+  showNotification(`Game Over!`, "red");
 }
 
 function restartGame() {
-  location.reload(); // Refresh the page to restart the game
+  location.reload();
 }
