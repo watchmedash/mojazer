@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <header>
-      <h1>Are you a genius?</h1>
+      <h1>What's your IQ?</h1>
     </header>
     <div id="game-container">
       <p id="timer" class="timer">Time: 30s</p>
@@ -19,13 +19,16 @@
       <p id="score" class="score">Score: 0</p>
       <div class="controls">
         <button class="button" id="hintBtn" onclick="useHint()" style="display: none;">Hints: 10</button>
-        <button class="button" id="startBtn" onclick="startGame()">Start</button>
-        <button class="button" id="restartBtn" onclick="restartGame()" style="display: none;">Play Again</button>
+        <button class="button" id="startBtn" onclick="startGame()">Find out</button>
+        <button class="button" id="restartBtn" onclick="restartGame()" style="display: none;">Try Again</button>
       </div>
     </div>
+    <footer>
+      <p>Created by DASHTROYER</p>
+    </footer>
     <div id="notification" class="notification"></div>
   </div>
-
+<img id="soundIcon" src="on.png" alt="Sound On" onclick="toggleSound()" style="cursor: pointer; width: 30px;">
   <script src="game.js"></script>
 </body>
 </html>

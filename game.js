@@ -9,6 +9,11 @@ let hints = 10;
 let hintsUsed = 0;
 let maxHintsPerQuestion = 2;
 let questions = [];
+let soundEnabled = true; // Variable to track sound status
+
+// Load sound effects
+const correctSound = new Audio('correct.mp3'); // Replace with the correct path
+const wrongSound = new Audio('error.mp3'); // Replace with the correct path
 
 // Shuffle function
 function shuffleArray(array) {
@@ -29,6 +34,12 @@ Promise.all([fetch('questions.json').then((response) => response.json())])
   });
 
 function startGame() {
+
+  const h1Element = document.querySelector("h1");
+    if (h1Element) {
+      h1Element.remove();
+    }
+
   lives = 5;
   score = 0;
   correctAnswers = 0;
@@ -97,13 +108,18 @@ function checkAnswer(selectedIndex, correctAnswer, selectedBtn) {
     consecutiveCorrectAnswers++;
     showNotification("Correct!", "green");
 
+    // Play correct answer sound if enabled
+    if (soundEnabled) {
+      correctSound.play();
+    }
+
     if (correctAnswers % 4 === 0) {
       hints += 3;
       showNotification("You earned 3 extra hints!", "blue");
       document.getElementById("hintBtn").innerText = `Hints: ${hints}`;
     }
 
-    if (consecutiveCorrectAnswers === 5) {
+    if (consecutiveCorrectAnswers === 7) {
       lives += 2;
       showNotification("You earned 2 extra lives!", "blue");
       consecutiveCorrectAnswers = 0;
@@ -113,6 +129,13 @@ function checkAnswer(selectedIndex, correctAnswer, selectedBtn) {
     lives--;
     consecutiveCorrectAnswers = 0;
     showNotification(`The correct answer is: ${questions[currentQuestionIndex].options[correctIndex]}.`, "red");
+
+    // Play wrong answer sound if enabled
+    if (soundEnabled) {
+      wrongSound.play();
+    }
+
+    // Shake effect for wrong answer
     document.body.classList.add("shake");
     setTimeout(() => {
       document.body.classList.remove("shake");
@@ -208,4 +231,17 @@ function endGame() {
 // Restart the game
 function restartGame() {
   location.reload();
+}
+
+// Toggle sound on and off
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  const soundIcon = document.getElementById('soundIcon');
+  if (soundEnabled) {
+    soundIcon.src = 'on.png'; // Replace with the sound-on icon
+    soundIcon.alt = 'Sound On';
+  } else {
+    soundIcon.src = 'off.png'; // Replace with the sound-off icon
+    soundIcon.alt = 'Sound Off';
+  }
 }

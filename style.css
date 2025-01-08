@@ -10,13 +10,27 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url('https://researchleap.com/wp-content/uploads/2022/11/What-Does-a-Web-Based-Knowledge-Management-Software-Do.jpg') no-repeat center center/cover;
-  color: #333;
+  background: linear-gradient(-45deg, #2c3e50, #34495e, #1a252f, #2b3a42);
+  background-size: 400% 400%;
+  color: #fff;
   flex-direction: column;
   text-align: center;
-  background-size: cover;
+  animation: gradientBackground 10s ease infinite;
   overflow: hidden;
 }
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 .container {
   text-align: center;
@@ -301,4 +315,14 @@ header h1 {
     font-size: 1.1rem;
     padding: 3px 6px;
   }
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+footer p {
+  font-style: italic;
 }
