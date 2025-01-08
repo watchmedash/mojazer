@@ -9,13 +9,11 @@ let hints = 10;
 let hintsUsed = 0;
 let maxHintsPerQuestion = 2;
 let questions = [];
-let soundEnabled = true; // Variable to track sound status
+let soundEnabled = true;
 
-// Load sound effects
-const correctSound = new Audio('correct.mp3'); // Replace with the correct path
-const wrongSound = new Audio('error.mp3'); // Replace with the correct path
+const correctSound = new Audio('correct.mp3');
+const wrongSound = new Audio('error.mp3');
 
-// Shuffle function
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -34,11 +32,10 @@ Promise.all([fetch('questions.json').then((response) => response.json())])
   });
 
 function startGame() {
-
   const h1Element = document.querySelector("h1");
-    if (h1Element) {
-      h1Element.remove();
-    }
+  if (h1Element) {
+    h1Element.remove();
+  }
 
   lives = 5;
   score = 0;
@@ -59,7 +56,6 @@ function startGame() {
   startQuestionTimer();
 }
 
-// Start the question timer
 function startQuestionTimer() {
   questionTimer = 30;
   hintsUsed = 0;
@@ -82,7 +78,6 @@ function startQuestionTimer() {
   }, 1000);
 }
 
-// Show question and options
 function showQuestion(index) {
   const questionObj = questions[index];
   document.getElementById("question").innerText = questionObj.question;
@@ -108,10 +103,20 @@ function checkAnswer(selectedIndex, correctAnswer, selectedBtn) {
     consecutiveCorrectAnswers++;
     showNotification("Correct!", "green");
 
-    // Play correct answer sound if enabled
     if (soundEnabled) {
       correctSound.play();
     }
+
+    // Show the correct image with animation
+    const correctImage = document.getElementById("correctImage");
+    correctImage.classList.add("show");
+    correctImage.style.animation = "peek 0.6s ease-in-out";
+
+    // Hide the image after animation completes
+    setTimeout(() => {
+      correctImage.classList.remove("show");
+      correctImage.style.animation = "none";  // Reset animation
+    }, 600);
 
     if (correctAnswers % 4 === 0) {
       hints += 3;
@@ -130,12 +135,21 @@ function checkAnswer(selectedIndex, correctAnswer, selectedBtn) {
     consecutiveCorrectAnswers = 0;
     showNotification(`The correct answer is: ${questions[currentQuestionIndex].options[correctIndex]}.`, "red");
 
-    // Play wrong answer sound if enabled
     if (soundEnabled) {
       wrongSound.play();
     }
 
-    // Shake effect for wrong answer
+    // Show the wrong image with animation
+    const wrongImage = document.getElementById("wrongImage");
+    wrongImage.classList.add("show");
+    wrongImage.style.animation = "peek 0.6s ease-in-out";
+
+    // Hide the image after animation completes
+    setTimeout(() => {
+      wrongImage.classList.remove("show");
+      wrongImage.style.animation = "none";  // Reset animation
+    }, 600);
+
     document.body.classList.add("shake");
     setTimeout(() => {
       document.body.classList.remove("shake");
@@ -161,7 +175,6 @@ function nextQuestion() {
   updateUI();
 }
 
-// Update the UI with current lives and score
 function updateUI() {
   document.getElementById("lives").innerText = `Lives: ${lives}`;
   document.getElementById("score").innerText = `Score: ${score}`;
@@ -201,7 +214,6 @@ function showNotification(message, color) {
   }, 1000);
 }
 
-// End the game
 function endGame() {
   clearInterval(timerInterval);
 
@@ -214,34 +226,32 @@ function endGame() {
 
   const totalScore = document.createElement('p');
   totalScore.id = 'totalScore';
-  totalScore.innerText = `Your IQ is: ${100 + score}`;
+  totalScore.innerText = `Total points: ${100 + score}`;
   document.querySelector('.controls').insertBefore(totalScore, document.getElementById("restartBtn"));
 
   const heroImage = document.createElement('img');
-  const heroImageUrl = "https://cdn-icons-png.flaticon.com/512/7551/7551506.png";
+  const heroImageUrl = "shock.png";
   heroImage.src = heroImageUrl;
   heroImage.alt = `Hero image for score ${score}`;
-  heroImage.style.width = '150px';
+  heroImage.style.width = '350px';
   document.querySelector('.controls').insertBefore(heroImage, document.getElementById("restartBtn"));
 
   document.getElementById("restartBtn").style.display = 'block';
   showNotification(`Game Over!`, "red");
 }
 
-// Restart the game
 function restartGame() {
   location.reload();
 }
 
-// Toggle sound on and off
 function toggleSound() {
   soundEnabled = !soundEnabled;
   const soundIcon = document.getElementById('soundIcon');
   if (soundEnabled) {
-    soundIcon.src = 'on.png'; // Replace with the sound-on icon
+    soundIcon.src = 'on.png';
     soundIcon.alt = 'Sound On';
   } else {
-    soundIcon.src = 'off.png'; // Replace with the sound-off icon
+    soundIcon.src = 'off.png';
     soundIcon.alt = 'Sound Off';
   }
 }

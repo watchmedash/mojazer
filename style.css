@@ -10,12 +10,12 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(-45deg, #2c3e50, #34495e, #1a252f, #2b3a42);
+  background: linear-gradient(-45deg, #e74c3c, #2980b9, #8e44ad, #2ecc71);
   background-size: 400% 400%;
   color: #fff;
   flex-direction: column;
   text-align: center;
-  animation: gradientBackground 10s ease infinite;
+  animation: gradientBackground 5s ease infinite;
   overflow: hidden;
 }
 
@@ -30,7 +30,6 @@ body {
     background-position: 0% 50%;
   }
 }
-
 
 .container {
   text-align: center;
@@ -215,18 +214,6 @@ header h1 {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  50% { transform: translateX(10px); }
-  75% { transform: translateX(-10px); }
-  100% { transform: translateX(0); }
-}
-
-.shake {
-  animation: shake 0.5s ease-out;
-}
-
 @media (max-width: 768px) {
   .container {
     width: 90%;
@@ -325,4 +312,50 @@ footer {
 
 footer p {
   font-style: italic;
+}
+
+.answer-image {
+  position: fixed;
+  top: 50%;  /* Position the image vertically at the center of the page */
+  right: -100%;  /* Initially hidden off-screen */
+  transform: translateY(-50%);  /* Center the image vertically */
+  width: auto;  /* Maintain the aspect ratio */
+  height: 20vh;  /* Image height takes up 60% of the viewport height */
+  transition: right 0.8s ease-in-out;  /* Smooth transition for the right movement */
+  z-index: 999;
+  display: none;  /* Initially hide the images */
+}
+
+.answer-image.show {
+  right: 10px;  /* Move the image into view */
+  display: block;  /* Show the image */
+  animation: peek 1.2s ease-in-out forwards;  /* Slower and smoother animation */
+}
+
+@keyframes peek {
+  0% {
+    right: -100%;  /* Start off-screen */
+  }
+  50% {
+    right: 10px;  /* Peek in from the right */
+  }
+  100% {
+    right: 0;  /* Final position in full view */
+  }
+}
+
+.answer-image.hide {
+  animation: hide 1.2s ease-in-out forwards;  /* Add an animation for the exit */
+}
+
+@keyframes hide {
+  0% {
+    right: 0;  /* Start from full view */
+  }
+  50% {
+    right: 10px;  /* Move slightly back */
+  }
+  100% {
+    right: -100%;  /* Move off-screen */
+  }
 }

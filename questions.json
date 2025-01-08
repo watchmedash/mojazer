@@ -12,7 +12,7 @@
     {
         "question": "Who wrote the famous novel \"One Hundred Years of Solitude\"?",
         "options": [
-            "Gabriel Garc\u00c3\u00ada M\u00c3\u00a1rquez",
+            "Gabriel Garcia Marquez",
             "Jorge Luis Borges",
             "Mario Vargas Llosa",
             "Isabel Allende"
@@ -832,7 +832,7 @@
     {
         "question": "What is the name of the longest-running musical on Broadway?",
         "options": [
-            "Les Mis\u00c3\u00a9rables",
+            "Les Miserables",
             "The Phantom of the Opera",
             "Hamilton",
             "Cats"
@@ -964,7 +964,7 @@
         "options": [
             "Orinoco",
             "Amazon",
-            "Paran\u00c3\u00a1",
+            "Parana",
             "Mississippi"
         ],
         "correctAnswer": "B"
@@ -1155,7 +1155,7 @@
             "Beijing",
             "Tokyo",
             "New York City",
-            "S\u00c3\u00a3o Paulo"
+            "Sao Paulo"
         ],
         "correctAnswer": "B"
     },
@@ -2230,7 +2230,7 @@
         "correctAnswer": "A"
     },
     {
-        "question": "What material is typically used for the core of a high-quality chef\u00e2\u20ac\u2122s knife to provide flexibility and strength?",
+        "question": "What material is typically used for the core of a high-quality chefs knife to provide flexibility and strength?",
         "options": [
             "Stainless steel",
             "Carbon steel",
@@ -2590,16 +2590,6 @@
         "correctAnswer": "D"
     },
     {
-        "question": "What video game franchise features characters like Mario, Luigi, and Princess Peach?",
-        "options": [
-            "Sonic the Hedgehog",
-            "Super Mario",
-            "The Legend of Zelda",
-            "Street Fighter"
-        ],
-        "correctAnswer": "B"
-    },
-    {
         "question": "What famous 1990s television series featured a group of friends living in New York City?",
         "options": [
             "Friends",
@@ -2660,7 +2650,7 @@
         "correctAnswer": "A"
     },
     {
-        "question": "Which artist famously interrupted Taylor Swift\u00e2\u20ac\u2122s acceptance speech at the 2009 MTV Video Music Awards?",
+        "question": "Which artist famously interrupted Taylor Swifts acceptance speech at the 2009 MTV Video Music Awards?",
         "options": [
             "Kanye West",
             "Justin Timberlake",
@@ -2804,7 +2794,7 @@
         "options": [
             "Kendall Jenner",
             "Kim Kardashian",
-            "Khlo\u00c3\u00a9 Kardashian",
+            "Khloe Kardashian",
             "Kylie Jenner"
         ],
         "correctAnswer": "D"
@@ -2892,7 +2882,7 @@
     {
         "question": "Who was the first woman to win the Grammy Award for Album of the Year twice?",
         "options": [
-            "Beyonc\u00c3\u00a9",
+            "Beyonce",
             "Taylor Swift",
             "Adele",
             "Billie Eilish"
@@ -2910,7 +2900,7 @@
         "correctAnswer": "A"
     },
     {
-        "question": "What video game series features the character of an Italian plumber named Mario?",
+        "question": "What video game series features the character of an Italian plumber?",
         "options": [
             "Sonic the Hedgehog",
             "The Legend of Zelda",
