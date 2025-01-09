@@ -1,7 +1,7 @@
 let lives = 5;
 let score = 0;
 let currentQuestionIndex = 0;
-let questionTimer = 30;
+let questionTimer = 10;
 let timerInterval;
 let correctAnswers = 0;
 let consecutiveCorrectAnswers = 0;
@@ -57,7 +57,7 @@ function startGame() {
 }
 
 function startQuestionTimer() {
-  questionTimer = 30;
+  questionTimer = 10;
   hintsUsed = 0;
   clearInterval(timerInterval);
 
@@ -236,9 +236,26 @@ function endGame() {
   heroImage.style.width = '350px';
   document.querySelector('.controls').insertBefore(heroImage, document.getElementById("restartBtn"));
 
+  if (score >= 400) {
+    const specialButton = document.createElement('button');
+    specialButton.innerText = 'Congratulations! Click here for the reward.';
+    specialButton.onclick = () => {
+      window.location.href = 'https://youtu.be/Q0AUm-vXdkw?si=whZAHrUBtH5IpPcu';
+    };
+    specialButton.style.marginTop = '20px';
+    specialButton.style.padding = '10px 20px';
+    specialButton.style.backgroundColor = '#4CAF50';
+    specialButton.style.color = 'white';
+    specialButton.style.border = 'none';
+    specialButton.style.cursor = 'pointer';
+
+    document.querySelector('.controls').insertBefore(specialButton, document.getElementById("restartBtn"));
+  }
+
   document.getElementById("restartBtn").style.display = 'block';
   showNotification(`Game Over!`, "red");
 }
+
 
 function restartGame() {
   location.reload();
