@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(-45deg, #e74c3c, #2980b9, #8e44ad, #2ecc71);
+  background: linear-gradient(-45deg, #21e8ff, #00c4ff, #01b7e4, #00c9f1);
   background-size: 400% 400%;
   color: #fff;
   flex-direction: column;
