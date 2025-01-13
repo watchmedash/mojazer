@@ -1,0 +1,227 @@
+[
+    {
+        "date": "2025-01-01",
+        "events": [
+            {
+                "title": "New Year's Day",
+                "image": "https://media.thv11.com/assets/KTHV/images/efc758e4-e106-414c-9ff7-6b4afc00b7bc/20241228T211945/efc758e4-e106-414c-9ff7-6b4afc00b7bc_750x422.jpg",
+                "details": "Celebration of the first day of the new year."
+            }
+        ]
+    },
+    {
+        "date": "2025-03-29",
+        "events": [
+            {
+                "title": "Eid al-Fitr",
+                "image": "https://static.euronews.com/articles/stories/06/67/27/28/1200x675_cmsv2_cb331c6b-8ac2-5b48-867e-556d41685cfc-6672728.jpg",
+                "details": "Marks the end of Ramadan, a significant religious holiday in Islam."
+            }
+        ]
+    },
+    {
+        "date": "2025-03-30",
+        "events": [
+            {
+                "title": "Eid al-Fitr Holiday",
+                "image": "https://static.euronews.com/articles/stories/06/67/27/28/1200x675_cmsv2_cb331c6b-8ac2-5b48-867e-556d41685cfc-6672728.jpg",
+                "details": "Second day of Eid al-Fitr celebrations."
+            }
+        ]
+    },
+    {
+        "date": "2025-03-31",
+        "events": [
+            {
+                "title": "Eid al-Fitr Holiday",
+                "image": "https://static.euronews.com/articles/stories/06/67/27/28/1200x675_cmsv2_cb331c6b-8ac2-5b48-867e-556d41685cfc-6672728.jpg",
+                "details": "Third day of Eid al-Fitr celebrations."
+            }
+        ]
+    },
+    {
+        "date": "2025-04-01",
+        "events": [
+            {
+                "title": "Eid al-Fitr Holiday",
+                "image": "https://static.euronews.com/articles/stories/06/67/27/28/1200x675_cmsv2_cb331c6b-8ac2-5b48-867e-556d41685cfc-6672728.jpg",
+                "details": "Fourth day of Eid al-Fitr celebrations."
+            },
+            {
+                "title": "April Fool's Day",
+                "image": "https://www.kumon.ie/storage/uploads/ie_images/AdobeStock_324932899_resized.jpg",
+                "details": "A day for playing pranks and practical jokes."
+            }
+        ]
+    },
+    {
+        "date": "2025-06-05",
+        "events": [
+            {
+                "title": "Arafat Day",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/5/50/Pilgrims_cover_Arafat%27s_roads%2C_plains_and_mountain_-_Flickr_-_Al_Jazeera_English.jpg",
+                "details": "A day of worship for Muslims, the day before Eid al-Adha."
+            }
+        ]
+    },
+    {
+        "date": "2025-06-06",
+        "events": [
+            {
+                "title": "Eid al-Adha",
+                "image": "https://inlogic.ae/wp-content/uploads/2024/06/41961108_8967543-1-scaled.jpg",
+                "details": "Celebration of Eid al-Adha, the festival of sacrifice."
+            }
+        ]
+    },
+    {
+        "date": "2025-06-07",
+        "events": [
+            {
+                "title": "Eid al-Adha Holiday",
+                "image": "https://inlogic.ae/wp-content/uploads/2024/06/41961108_8967543-1-scaled.jpg",
+                "details": "Second day of Eid al-Adha celebrations."
+            }
+        ]
+    },
+    {
+        "date": "2025-06-08",
+        "events": [
+            {
+                "title": "Eid al-Adha Holiday",
+                "image": "https://inlogic.ae/wp-content/uploads/2024/06/41961108_8967543-1-scaled.jpg",
+                "details": "Third day of Eid al-Adha celebrations."
+            }
+        ]
+    },
+    {
+        "date": "2025-06-26",
+        "events": [
+            {
+                "title": "Islamic New Year",
+                "image": "https://d1sxy7l4fhu207.cloudfront.net/uploads/attachments/production/qg1se5QizXk32VimSsCVXGrAO3VJjVkPS919z5SA.png",
+                "details": "The first day of the Islamic lunar calendar year."
+            }
+        ]
+    },
+    {
+        "date": "2025-09-04",
+        "events": [
+            {
+                "title": "Prophet Muhammad's Birthday",
+                "image": "https://media.licdn.com/dms/image/D4E12AQE-4Rv2OOOKtg/article-cover_image-shrink_720_1280/0/1665515300053?e=2147483647&v=beta&t=fz3NMwxGfkr19WPukwxO_uMJSPAp0qlZoi-49LJh038",
+                "details": "Commemoration of the birth of the Prophet Muhammad."
+            }
+        ]
+    },
+    {
+        "date": "2025-11-30",
+        "events": [
+            {
+                "title": "Commemoration Day",
+                "image": "https://greenwgroup.ae/wp-content/uploads/2020/11/UAE-Commemoration-Day-%E2%80%93-Green-World-Group.jpg",
+                "details": "Honoring the UAE's martyrs and veterans."
+            }
+        ]
+    },
+    {
+        "date": "2025-12-02",
+        "events": [
+            {
+                "title": "National Day",
+                "image": "https://cdn.jumeirah.com/-/mediadh/dh/hospitality/jumeirah/article/stories/dubai/everything-you-need-to-know-about-uae-national-day/content--abu-dhabi-skyline-with-uae-flag-116052247--istockfranckreporter.jpg?revision=8d2f2706-70ec-43eb-b226-22d05ec7c634",
+                "details": "Celebration of the UAE's national unity and independence."
+            }
+        ]
+    },
+    {
+        "date": "2025-12-03",
+        "events": [
+            {
+                "title": "National Day Holiday",
+                "image": "https://cdn.jumeirah.com/-/mediadh/dh/hospitality/jumeirah/article/stories/dubai/everything-you-need-to-know-about-uae-national-day/content--abu-dhabi-skyline-with-uae-flag-116052247--istockfranckreporter.jpg?revision=8d2f2706-70ec-43eb-b226-22d05ec7c634",
+                "details": "Celebration of the UAE's national unity and independence."
+            }
+        ]
+    },
+    {
+        "date": "2025-11-03",
+        "events": [
+            {
+                "title": "Flag Day",
+                "image": "https://openspace.ae/wp-content/uploads/2024/11/uae-flag-day__2024-scaled.jpg",
+                "details": "UAE Flag Day."
+            }
+        ]
+    },
+    {
+        "date": "2025-02-14",
+        "events": [
+            {
+                "title": "Valentine's Day",
+                "image": "https://courtsofrayleigh.co.uk/wp-content/uploads/2024/01/valentines-day.jpg",
+                "details": "A day celebrating love and affection between partners."
+            }
+        ]
+    },
+    {
+        "date": "2025-04-22",
+        "events": [
+            {
+                "title": "Earth Day",
+                "image": "https://static1.squarespace.com/static/63064607eb816a4d50027fd1/6318f0d97b6fd7009811e363/65ce37dadf592a28801efb3e/1712246761634/earth-day-eden-green-tech.png?format=1500w",
+                "details": "A day to raise awareness about environmental issues and support environmental protection."
+            }
+        ]
+    },
+    {
+        "date": "2025-05-01",
+        "events": [
+            {
+                "title": "International Workers' Day",
+                "image": "https://assets.nationbuilder.com/bcfs/pages/146/meta_images/original/IWD.jpg?1599602980",
+                "details": "A celebration of labor and working-class people."
+            }
+        ]
+    },
+    {
+        "date": "2025-10-31",
+        "events": [
+            {
+                "title": "Halloween",
+                "image": "https://assets.editorial.aetnd.com/uploads/2009/11/halloween-gettyimages-1424736925.jpg",
+                "details": "A celebration involving costumes, trick-or-treating, and spooky decorations."
+            }
+        ]
+    },
+    {
+        "date": "2025-12-25",
+        "events": [
+            {
+                "title": "Christmas Day",
+                "image": "https://cdn.britannica.com/38/196638-050-94E05EF4/Santa-Claus.jpg",
+                "details": "A holiday celebrating the birth of Jesus Christ, marked by gift-giving and festive decorations."
+            }
+        ]
+    },
+    {
+        "date": "2025-05-11",
+        "events": [
+            {
+                "title": "Mother's Day",
+                "image": "https://www.blossominggifts.com/blog/wp-content/uploads/2024/03/mothers-day-quotes-cards-840x473.jpg",
+                "details": "A day to honor and celebrate mothers and motherhood."
+            }
+        ]
+    },
+    {
+        "date": "2025-06-21",
+        "events": [
+            {
+                "title": "Father's Day",
+                "image": "https://static.india.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-10.55.22-PM.jpeg?impolicy=Medium_Widthonly&w=400",
+                "details": "A day to honor and celebrate fathers and fatherhood."
+            }
+        ]
+    }
+]
