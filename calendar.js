@@ -192,7 +192,7 @@ const lightThemeStyles = `
         color: #333;
     }
     #calendar-month-year {
-        color: #000; /* Ensure the text color is dark for light theme */
+        color: #000;
     }
     #theme-toggle {
         background-color: #f0f0f0;
@@ -276,15 +276,15 @@ window.onload = () => {
         const themeIcon = document.getElementById('theme-icon');
 
         if (isDarkTheme) {
-            themeToggleButton.style.backgroundColor = '#f0f0f0'; // Light background for the button
+            themeToggleButton.style.backgroundColor = '#f0f0f0';
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
-            themeIcon.style.color = '#ff9f00'; // Color of the sun icon (yellow/orange)
+            themeIcon.style.color = '#ff9f00';
         } else {
-            themeToggleButton.style.backgroundColor = '#444'; // Dark background for the button
+            themeToggleButton.style.backgroundColor = '#444';
             themeIcon.classList.remove('fa-sun');
             themeIcon.classList.add('fa-moon');
-            themeIcon.style.color = '#fff'; // Color of the moon icon (white)
+            themeIcon.style.color = '#fff';
         }
     };
 
@@ -295,8 +295,6 @@ window.onload = () => {
 
     applyTheme();
 };
-
-
 
     document.body.addEventListener('click', (event) => {
 
@@ -324,7 +322,6 @@ window.onload = () => {
             updateCalendar();
         }
 
-        // Event navigation buttons
         if (event.target && event.target.classList.contains('nav-arrow')) {
             const dayEvents = events.find(e => e.date === event.target.closest('.modal-content').dataset.date)?.events || [];
             const index = event.target.id === 'prev-event' ? (currentEventIndex - 1 + dayEvents.length) % dayEvents.length : (currentEventIndex + 1) % dayEvents.length;
@@ -332,7 +329,6 @@ window.onload = () => {
             showEvent(dayEvents, currentEventIndex);
         }
     });
-
 
 const calendarHtml = `
     <div id="calendar-container">
@@ -451,7 +447,6 @@ function showEvent(dayEvents, index) {
         showEvent(dayEvents, nextIndex);
     };
 }
-
 
 function updateCalendar() {
     updateCalendarHeader();
