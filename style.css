@@ -110,7 +110,7 @@ h2, h3 {
 }
 
 .remove-btn {
-    background: red;
+    background: #ff9966;
     color: white;
     border: none;
     padding: 3px;
@@ -124,8 +124,8 @@ h2, h3 {
 }
 
 .ahmad-photo {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
     border-radius: 50%;
     margin: 0 auto 20px;
