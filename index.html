@@ -3,22 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timewall Tasks</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Spend Ahmad's Money</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Timewall Tasks</h1>
-    </header>
-    <main>
-        <section id="tasks">
-            <h2>Available Tasks</h2>
-            <ul id="task-list"></ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Timewall Tasks</p>
-    </footer>
-    <script src="assets/js/script.js"></script>
+    <div class="container">
+
+      <img src="https://media.istockphoto.com/id/1187980751/vector/arabic-man-with-a-beard-in-traditional-wearing-a-keffiyeh.jpg?s=612x612&w=0&k=20&c=fFRZwuayhNfHVFmAmBSkKWbTwYq-gaUVC9JHD13Ru2g=" alt="Ahmad" class="ahmad-photo">
+        <h1>Spend Ahmad's Money 💰</h1>
+        <div class="sticky-balance">
+    <h2>Balance: AED <span id="balance">100000000000</span></h2>
+</div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div id="items-container"></div>
+
+        <div class="receipt">
+    <h2>Shopping Cart 🛒</h2>
+    <ul id="cart"></ul>
+    <hr>
+    <h3>Total Money Spent: AED <span id="total-spent">0</span></h3>
+</div>
+
+<button id="checkout-btn">Checkout</button>
+    </div>
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h2>Checkout</h2>
+            <div id="checkout-items"></div>
+            <h3>Total: AED <span id="checkout-total">0</span></h3>
+            <button id="reset-btn">Reset</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

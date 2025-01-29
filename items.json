@@ -1,0 +1,567 @@
+[
+    {
+        "name": "Karak Tea",
+        "price": 2,
+        "image": "https://cdn.shopify.com/s/files/1/0655/8279/2933/files/Karak_chai-3_480x480.webp?v=1712647949"
+    },
+    {
+        "name": "Shawarma",
+        "price": 5,
+        "image": "https://recipes.net/wp-content/uploads/2024/01/how-to-eat-shawarma-1706286176.jpg"
+    },
+    {
+        "name": "Nol Card",
+        "price": 80,
+        "image": "https://s3.me-central-1.amazonaws.com/com.insurancemarket.wp/2024/01/image-200.png"
+    },
+    {
+        "name": "iPhone",
+        "price": 6500,
+        "image": "https://bgr.com/wp-content/uploads/2024/09/Apple-iPhone-16-finish-lineup-240909.jpg?quality=82&strip=all&resize=1400,1050"
+    },
+    {
+        "name": "Rolls-Royce Cullinan",
+        "price": 2000000,
+        "image": "https://hips.hearstapps.com/hmg-prod/images/2025-rolls-royce-cullinan-black-badge-107-663a56d913506.jpg?crop=0.834xw:0.740xh;0.0799xw,0.178xh&resize=1200:*"
+    },
+    {
+        "name": "Burj Khalifa Apartment",
+        "price": 5000000,
+        "image": "https://www.dubaichronicle.com/wp-content/uploads/2014/11/Burj-Khalifa-low-res-12.jpg"
+    },
+    {
+        "name": "Camel Ride in the Desert",
+        "price": 100,
+        "image": "https://thingstodoindubai.com/wp-content/uploads/2021/05/camel-riding-with-guide.jpg"
+    },
+    {
+        "name": "Yacht",
+        "price": 6000000,
+        "image": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iFmxGXwFZUiY/v0/-1x-1.webp"
+    },
+    {
+        "name": "Private Jet",
+        "price": 70000000,
+        "image": "https://www.jets.com/wp-content/uploads/2021/10/challenger-300.jpg"
+    },
+    {
+        "name": "Ferrari",
+        "price": 3000000,
+        "image": "https://i0.wp.com/www.motorsportmaranello.com/wp-content/uploads/2022/07/ferrari-1.jpg?fit=958%2C637&ssl=1"
+    },
+    {
+        "name": "Helicopter",
+        "price": 30000000,
+        "image": "https://m.media-amazon.com/images/I/61-5niSLRrL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "name": "Dinner at At.mosphere",
+        "price": 2500,
+        "image": "https://cdn-imgix.headout.com/media/images/73a6d260cf8f2565a21b8848dddf2904-25527-dubai-at.-mosphere-burj-khalifa-07.jpg?w=744&h=465&crop=faces&auto=compress%2Cformat&fit=min"
+    },
+    {
+        "name": "Private Safari Tour",
+        "price": 5000,
+        "image": "https://booktoursindubai.com/wp-content/uploads/2023/04/private-desert-safari-dubai-2.jpg"
+    },
+    {
+        "name": "Helicopter Ride Over the Palm Jumeirah",
+        "price": 3500,
+        "image": "https://skylandtourism.com/wp-content/uploads/2018/03/Helicopter-Tour3.jpg"
+    },
+    {
+        "name": "Dubai Aquarium VIP Experience",
+        "price": 1000,
+        "image": "https://travools.com/images/trip/1633860553_6162bbc97f792_banner.jpg"
+    },
+    {
+        "name": "Gold Bullion Investment",
+        "price": 1000000,
+        "image": "https://economymiddleeast.com/wp-content/uploads/2023/12/reason-to-invest-in-gold-2.jpg"
+    },
+    {
+        "name": "Skydiving Over Palm Jumeirah",
+        "price": 4000,
+        "image": "https://cdn.prod.website-files.com/65f00869733520542e4a566f/66b342261d5a75160e56792e_About%20us.jpg"
+    },
+    {
+        "name": "5-Star Brunch at the Burj Al Arab",
+        "price": 1500,
+        "image": "https://i.ytimg.com/vi/f5NioV7N4pE/maxresdefault.jpg"
+    },
+    {
+        "name": "VIP Tickets at Coca-Cola Arena",
+        "price": 2000,
+        "image": "https://www.theticketingbusiness.com/wp-content/uploads/2020/02/CCA-DSF-002.jpg"
+    },
+    {
+        "name": "Dubai Marina Dinner Cruise",
+        "price": 1200,
+        "image": "https://media.tacdn.com/media/attractions-splice-spp-674x446/11/70/b1/77.jpg"
+    },
+    {
+        "name": "The World Islands Villa",
+        "price": 8000000,
+        "image": "https://topluxuryproperty.com//uploadFile/gallery/THOE_Marbella_Resort_Hotel__hero_MAGE__638522360175158749_820465_.jpg"
+    },
+    {
+        "name": "VIP Access to Dubai Fashion Week",
+        "price": 5000,
+        "image": "https://platinumlist.net/guide/wp-content/uploads/2024/12/Roberto-Cavalli-S25-040_11zon-1950x13001-1-1024x512.jpg"
+    },
+    {
+        "name": "Private Dinner with a Celebrity Chef",
+        "price": 8000,
+        "image": "https://cateringindubai.com/wp-content/uploads/2024/10/vincent.jpg"
+    },
+    {
+        "name": "Luxury Desert Glamping Experience",
+        "price": 4000,
+        "image": "https://www.arabiannightsresort.com/public/thumbs/local_exp-gallery/15/Glamping-in-the-Desert-1_590_1800.jpg"
+    },
+    {
+        "name": "Burj Khalifa Observation Deck VIP Ticket",
+        "price": 1500,
+        "image": "https://cdn.getyourguide.com/img/tour/5491bf95a881d.jpeg/140.jpg"
+    },
+    {
+        "name": "Cultural Tour with Private Guide",
+        "price": 3000,
+        "image": "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/fb/09/e4.jpg"
+    },
+    {
+        "name": "Private Beach Cabana at Jumeirah Beach",
+        "price": 6000,
+        "image": "https://www.azure-beach.com/dubai/wp-content/uploads/sites/2/2024/04/1.jpg"
+    },
+    {
+        "name": "Heli-Skiing in the UAE Desert",
+        "price": 7000,
+        "image": "https://dubaiexplorer.net/wp-content/uploads/Sand-Skiing-Desert-Dubai.jpg"
+    },
+    {
+        "name": "Exotic Dinner at Pierchic",
+        "price": 2500,
+        "image": "https://i0.wp.com/rumemagazine.com/wp-content/uploads/2018/04/Dubais-exclusive-long-table-dining-experience-on-the-pier.jpeg"
+    },
+    {
+        "name": "Exclusive VIP Access to Dubai’s Nightclubs",
+        "price": 5000,
+        "image": "https://www.atlys.com/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FW3Iz4WACAy2J0qT0cCT3xA%2Fdidi%2Farticles%2Fg43v73st5vrgssbo1cv1jfii%2Fpublic&w=3840&q=75"
+    },
+    {
+        "name": "Luxury Yacht Staycation for a Weekend",
+        "price": 30000,
+        "image": "https://tripventura.com/cdn/shop/files/WhatsApp_Image_2024-10-15_at_10.30.54_AM.jpg?v=1728974434&width=1946"
+    },
+    {
+        "name": "Private VIP Access to Ski Dubai",
+        "price": 2000,
+        "image": "https://s3.me-central-1.amazonaws.com/com.insurancemarket.wp/2024/07/image-72.jpg"
+    },
+    {
+        "name": "Luxury Private Concert at Dubai Opera",
+        "price": 25000,
+        "image": "https://cdn-imgix.headout.com/tour/17775/TOUR-IMAGE/37cc5699-c005-4860-bf61-4639ea7c5775-9780-dubai-dubai-opera-house-tour-01.jpg?auto=format&w=702.4499999999999&h=401.4&q=90&fit=crop&ar=7%3A4&crop=faces"
+    },
+    {
+        "name": "Luxury Spa Day at Talise Spa",
+        "price": 1500,
+        "image": "https://www.visitdubai.com/-/media/gathercontent/poi/t/talise-spa/fallback-image/talisespaburjalarabjpg.jpg"
+    },
+    {
+        "name": "Banana",
+        "price": 5,
+        "image": "https://www.thespruceeats.com/thmb/iuLwY6XcVsDZRTG3Cj3NkhuKERQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-chocolate-peanut-butter-banana-smoothie-1000994-bananas-cropped-e4bdab5174cf461baf30bcdb8193c3e0.jpg"
+    },
+    {
+        "name": "Gallon of Milk",
+        "price": 15,
+        "image": "https://images-eu-prod.cms.commerce.dynamics.com/cms/api/vnnhvggtsx/imageFileData/search?fileName=/Products%2F100038_000_001.png"
+    },
+    {
+        "name": "Eggs (Dozen)",
+        "price": 15,
+        "image": "https://media.istockphoto.com/id/174928684/photo/egg-series-dozen.jpg?s=612x612&w=0&k=20&c=F5s_r7-Byx7hNHAwNTTgzAE0eJaw6ADSOcdLj2OiiZk="
+    },
+    {
+        "name": "Olive Oil",
+        "price": 30,
+        "image": "https://domf5oio6qrcr.cloudfront.net/medialibrary/11832/conversions/46d9dde1-3d7c-46d4-a05a-206f793afa66-thumb.jpg"
+    },
+    {
+        "name": "Chicken Biryani",
+        "price": 25,
+        "image": "https://recipe30.com/wp-content/uploads/2023/03/chicken-Biryani.jpg"
+    },
+    {
+        "name": "Beef Burger",
+        "price": 15,
+        "image": "https://www.thespruceeats.com/thmb/UpVWAcHnFEe_KvQpYsR1a7U-WY0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-your-best-grilled-burger-recipe-7511041-hero-C-c5080fa5f97c4c2b908968527f8a851b.jpg"
+    },
+    {
+        "name": "Formula 1 Race Car",
+        "price": 40000000,
+        "image": "https://cimg0.ibsrv.net/ibimg/hgm/1920x1080-1/100/643/2018-ferrari-sf71h-formula-1-race-car_100643832.jpg"
+    },
+    {
+        "name": "Bottle of Red Wine",
+        "price": 100,
+        "image": "https://www.culinaryhill.com/wp-content/uploads/2023/03/A-Guide-to-Red-Wine-Culinary-Hill-LR-04.jpg"
+    },
+    {
+        "name": "Laptop (MacBook Pro)",
+        "price": 12000,
+        "image": "https://www.apple.com/newsroom/images/product/mac/standard/Apple-MacBook-Pro-M2-Pro-and-M2-Max-hero-230117.jpg.og.jpg?202501140634"
+    },
+    {
+        "name": "Tennis Ball",
+        "price": 20,
+        "image": "https://images.vexels.com/media/users/3/132448/isolated/preview/baf01fb517749ccf4e1215d7576fe262-tennis-ball.png?w=360"
+    },
+    {
+        "name": "Chocolate Cake",
+        "price": 35,
+        "image": "https://mojo.generalmills.com/api/public/content/QYYSZSvDmU2BEzvW_HnVkg_gmi_hi_res_jpeg.jpeg?v=3668f321&t=466b54bb264e48b199fc8e83ef1136b4"
+    },
+    {
+        "name": "Pack of Coffee",
+        "price": 50,
+        "image": "https://www.altimus.ae/cdn/shop/files/NewProject-2024-05-23T152923.238.jpg?format=webp&v=1716463780&width=934"
+    },
+    {
+        "name": "Coca-Cola",
+        "price": 18,
+        "image": "https://www.altimus.ae/cdn/shop/products/NewProject-2023-01-05T133927.296.jpg?crop=center&format=webp&v=1707574339"
+    },
+    {
+        "name": "T-shirt",
+        "price": 100,
+        "image": "https://img-c.udemycdn.com/course/750x422/5444528_d4e3_5.jpg"
+    },
+    {
+        "name": "Leather Wallet",
+        "price": 150,
+        "image": "https://www.toryburch.ae/dw/image/v2/BDCL_PRD/on/demandware.static/-/Sites-toryburch-master-catalog/default/dwf27281ba/images/large/TB_160229_001_D.pdp-2642x3000.jpg?sw=1200&sh=1364"
+    },
+    {
+        "name": "Pack of Cigarettes (Marlboro)",
+        "price": 25,
+        "image": "https://p.turbosquid.com/ts-thumb/4s/a5xhW9/n77p8qqj/_00/jpg/1340051593/1920x1080/fit_q87/2e3432f9aa580c7ae1e364a2ee4ee81bc4623696/_00.jpg"
+    },
+    {
+        "name": "Bottle of Mineral Water",
+        "price": 3,
+        "image": "https://avantwater.co.uk/wp-content/uploads/2023/02/asz.png"
+    },
+    {
+        "name": "Bag of Rice (5kg)",
+        "price": 50,
+        "image": "https://bf1af2.a-cdn.akinoncloud.com/products/2024/09/11/71615/b4ec1fb3-8f9c-480a-a347-267d20fd6cbc_size3840_cropCenter.jpg"
+    },
+    {
+        "name": "Pineapple",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1490885578174-acda8905c2c6?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGluZWFwcGxlfGVufDB8fDB8fHww"
+    },
+    {
+        "name": "Pizza (Large Margherita)",
+        "price": 40,
+        "image": "https://www.dominos.com.au/ManagedAssets/AU/product/P3012XL/AU_P3012XL_en_hero_8332.jpg?v-1157526791"
+    },
+    {
+        "name": "Bag of Potatoes",
+        "price": 15,
+        "image": "https://africanmarketdubai.com/wp-content/uploads/2020/08/342f69a4-65a4-4a60-aac0-788856cd2b7a.jpg"
+    },
+    {
+        "name": "Bottle of Shampoo",
+        "price": 15,
+        "image": "https://www.kerastase.ae/dw/image/v2/BGSJ_PRD/on/demandware.static/-/Sites-kerastase-ng-master-catalog/default/dw195e077d/2022/KER_00117/3474637090708/3474637090708-IMAGE1.jpg?sw=340&sh=340&sm=cut&sfrm=jpg&q=80"
+    },
+    {
+        "name": "Fanta",
+        "price": 5,
+        "image": "https://hongphatfood.com/wp-content/uploads/2023/05/Fanta-Orange-Soft-Drink.jpg"
+    },
+    {
+        "name": "Cucumber (Per Piece)",
+        "price": 2,
+        "image": "https://www.bobtailfruit.co.uk/pub/media/catalog/product/1/9/1918.jpg"
+    },
+    {
+        "name": "Pack of Spaghetti",
+        "price": 10,
+        "image": "https://marino.ae/cdn/shop/files/King-Of-Pasta-Spaghetti-_Reg.-1.-4MM_-Pasta-400gx20-_1-carton_-Marino.AE-266112472.jpg?v=1709289023"
+    },
+    {
+        "name": "Lemon (Per Piece)",
+        "price": 3,
+        "image": "https://organic-public.s3.us-west-1.amazonaws.com/product/0dd2ebdc-f3b7-11eb-af58-0a8b933a216c/6707fd3fa03b15.47241124.jpg"
+    },
+    {
+        "name": "Canned Tuna",
+        "price": 8,
+        "image": "https://assets.epicurious.com/photos/591f5aa925dcff69a5e07ed7/16:9/w_1280,c_limit/shutterstock_582783436.jpg"
+    },
+    {
+        "name": "Bag of Flour (1kg)",
+        "price": 5,
+        "image": "https://foodindustrypackaging.com/wp-content/uploads/Flour-Bag-SOS-Bag.jpeg"
+    },
+    {
+        "name": "Pineapple Juice (1L)",
+        "price": 12,
+        "image": "https://m.media-amazon.com/images/I/814I1f-wUVL.jpg"
+    },
+    {
+        "name": "Watermelon (Whole)",
+        "price": 25,
+        "image": "https://www.waynik.com/media/catalog/product/cache/8cedae9787f811c4b75c7dfd4bd8a808/w/a/watermelon.jpg"
+    },
+    {
+        "name": "Lamb Chop (1kg)",
+        "price": 60,
+        "image": "https://www.simplyrecipes.com/thmb/oAlJf5c1EQExU3iYIGTPRlmtF-4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2013__02__Rosemary-Lamb-Chops-LEAD-2-4b70775441df47848c0b4352446bac77.jpg"
+    },
+    {
+        "name": "Tissue Paper",
+        "price": 10,
+        "image": "https://cdn.moglix.com/p/7bJLR8J8O7IRG-xxlarge.jpg"
+    },
+    {
+        "name": "Coffee Mug",
+        "price": 30,
+        "image": "https://m.media-amazon.com/images/I/61XiRRGa14L.jpg"
+    },
+    {
+        "name": "Sunscreen Lotion (SPF 50)",
+        "price": 40,
+        "image": "https://bondisands.co.uk/cdn/shop/files/BONDSSANDSE-COMM-SPF50_FRAGRANCEFREEFACESUNSCREEN75mL_UK_3STAR3_600x.jpg?v=1688656657"
+    },
+    {
+        "name": "Bluetooth Speaker",
+        "price": 150,
+        "image": "https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/speakers/SLMAX-SPEAKERWIRELESS/product_silo_images/aem_pdp_SLMPS_gallery_black_600x511_x2_3.png/jcr:content/renditions/cq5dam.web.320.320.png"
+    },
+    {
+        "name": "Pair of Sneakers",
+        "price": 250,
+        "image": "https://cdn.thewirecutter.com/wp-content/media/2024/05/runningshoesforyou-2048px-2251.jpg?auto=webp&quality=75&width=1024"
+    },
+    {
+        "name": "Set of Bed Sheets",
+        "price": 80,
+        "image": "https://cottonhome.ae/cdn/shop/files/FS_Pink_00_105d044d-4805-47d6-8029-44815216c232_700x700.jpg?v=1714829120"
+    },
+    {
+        "name": "Bottle of Apple Cider Vinegar",
+        "price": 15,
+        "image": "https://assets.bonappetit.com/photos/63bee8608e18cef4cd513491/16:9/w_2560%2Cc_limit/011123-basically-apple-cider-vinegar-03.jpg"
+    },
+    {
+        "name": "Pair of Sunglasses",
+        "price": 75,
+        "image": "https://img.glassesdirect.com/cms/media/filer_public/48/54/4854127a-577f-40a7-930e-5138985aed69/sunglasses-small-faces-hero-2400x933-2.jpg"
+    },
+    {
+        "name": "Car Tire",
+        "price": 300,
+        "image": "https://images-cdn.ubuy.co.in/6557baf592d53261947781a2-goodyear-reliant-all-season-21560r16-95v.jpg"
+    },
+    {
+        "name": "Electric Toothbrush",
+        "price": 100,
+        "image": "https://vmajans.com/wp-content/uploads/2024/06/71-pUNXuaJL.jpg"
+    },
+    {
+        "name": "Bag of Chips",
+        "price": 5,
+        "image": "https://preview.free3d.com/img/2020/06/1875481573705385661/tb86w3e3.jpg"
+    },
+    {
+        "name": "Ice Cream Tub (1L)",
+        "price": 30,
+        "image": "https://www.oreoicecream.com/static/c180cff17c023d46dd78ffa30af87602/79a76/Tub_acab607d30.webp"
+    },
+    {
+        "name": "Pack of Batteries (AA)",
+        "price": 10,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/61+F6NceMkL._UL500_.jpg"
+    },
+    {
+        "name": "Smartwatch",
+        "price": 200,
+        "image": "https://www.cnet.com/a/img/resize/4aaac6a883268123f2b692dc7ce41aac9e56b94f/hub/2023/12/20/0a0ad433-3889-42c1-9770-1559a6f1773b/gamin-venu-3-on-wrist.jpg?auto=webp&fit=crop&height=360&width=640"
+    },
+    {
+        "name": "Towel Set (3 Pieces)",
+        "price": 50,
+        "image": "https://m.media-amazon.com/images/I/81OuKSMtjKL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "name": "Jar of Honey",
+        "price": 25,
+        "image": "https://www.thespruceeats.com/thmb/-m1JpCPMCoZUbRNvWozA1w2Uxoo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/honeyantoniorosarioGettyImages-84552864-5842e5f73df78c0230a7ab0a.jpg"
+    },
+    {
+        "name": "Hair Dryer",
+        "price": 60,
+        "image": "https://nazih.ae/media/catalog/product/1/2/12570140_1.jpg?width=600&height=600&canvas=600:600&optimize=medium&bg-color=255,255,255&fit=bounds"
+    },
+    {
+        "name": "Women's Dress",
+        "price": 75,
+        "image": "https://images-cdn.ubuy.ae/66c8f9c3bc97e4333e5b5217-frobukio-elegant-women-long-sleeve-maxi.jpg"
+    },
+    {
+        "name": "Jeans (Denim)",
+        "price": 50,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ZPiBh8M4lteCsOPAfBfXA_3OKglNB_x0-g&s"
+    },
+    {
+        "name": "Leather Jacket",
+        "price": 150,
+        "image": "https://www.mrporter.com/variants/images/560971903906151/in/w2000_q60.jpg"
+    },
+    {
+        "name": "Sneakers (Nike)",
+        "price": 100,
+        "image": "https://www.nike.ae/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw9c6841ed/nk/575/0/b/0/e/7/5750b0e7_457b_43c6_a853_7969746c9942.jpg?sw=700&sh=700&sm=fit&q=100&strip=false"
+    },
+    {
+        "name": "Winter Coat",
+        "price": 120,
+        "image": "https://i.redd.it/0kdbfag974vc1.jpeg"
+    },
+    {
+        "name": "Men's Watch",
+        "price": 200,
+        "image": "https://images-cdn.ubuy.ae/6484ac96c913a5555e0f5648-2021-men-039-s-watches-top-brand.jpg"
+    },
+    {
+        "name": "Samsung Galaxy S25 Ultra",
+        "price": 6000,
+        "image": "https://mdsmobile.ae/cdn/shop/files/sm-s938_galaxys25ultra_front_titaniumsilverblue_241217_d6d0eec9-71e9-4506-a3db-2638f541464b_800x.png?v=1737700840"
+    },
+    {
+        "name": "Bluetooth Headphones",
+        "price": 150,
+        "image": "https://bf1af2.a-cdn.akinoncloud.com/products/2024/09/06/42787/3e2ab07f-6424-4862-b255-2cc08f25931e_size3840_cropCenter.jpg"
+    },
+    {
+        "name": "4K Television",
+        "price": 8000,
+        "image": "https://www.lg.com/ae/images/tvs/md06251785/gallery/dm-01.jpg"
+    },
+    {
+        "name": "Laptop (Dell XPS 13)",
+        "price": 1500,
+        "image": "https://uaedubai-bucket.s3.me-central-1.amazonaws.com/wp-content/uploads/2024/10/Dell-XPS-13-Copilot-PC-Graphite_uaedubai.ae_1.jpg"
+    },
+    {
+        "name": "Smart Speaker (Amazon Echo)",
+        "price": 100,
+        "image": "https://m.media-amazon.com/images/I/61CVa+a1l-L.jpg"
+    },
+    {
+        "name": "Tablet (iPad)",
+        "price": 1600,
+        "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-pink-wifi_FMT_WHH?wid=1280&hei=720&fmt=p-jpg&qlt=80&.v=OVJOVlhQelp3cUxDNnpBK0hFNFYrQUxaUVVtOUhUT0c2NzZRUllPeEJTeUI4d29DQnBYMTJ6bGFLQXl4VjVYYmJWU3RPOURZS0RCaG1weXBRYytNTENhUThSUC84VzArL0cyckNrL25wa0VEaXdsQXhSUVJEK2lURHg1RU5ZZUNvSmRod0k3RElNU3NpNVhFUHFEalpR&traceId=1"
+    },
+    {
+        "name": "Digital Camera",
+        "price": 1800,
+        "image": "https://unitedbroadcast.com/media/catalog/product/cache/24d15840cc6e5cbb343b5cce2cff5719/s/o/sony_zv_1_digital_camera_4EyZc.jpg"
+    },
+    {
+        "name": "Smartwatch (Garmin)",
+        "price": 250,
+        "image": "https://res.garmin.com/transform/image/upload/b_rgb:FFFFFF,c_pad,dpr_2.0,f_auto,h_400,q_auto,w_400/c_pad,h_400,w_400/v1/Product_Images/en/products/010-02804-80/v/pd-03-xl?pgw=1"
+    },
+    {
+        "name": "Electric Scooter",
+        "price": 1500,
+        "image": "https://ridejetson.com/cdn/shop/products/JRHYTM-BLK_04.jpg?v=1664830732&width=533"
+    },
+    {
+        "name": "Bicycle",
+        "price": 500,
+        "image": "https://uaegamer.com/cdn/shop/files/10003_90f4814c-ac65-4762-855d-50660b61e653.jpg?v=1704181766&width=1445"
+    },
+    {
+        "name": "Sedan Car",
+        "price": 25000,
+        "image": "https://d2m3nfprmhqjvd.cloudfront.net/blog/20220228143146/559212.jpeg"
+    },
+    {
+        "name": "Luxury Car (BMW)",
+        "price": 100000,
+        "image": "https://images.netdirector.co.uk/gforces-auto/image/upload/w_352,h_235,dpr_2.0,q_auto,c_fill,f_auto,fl_lossy/auto-client/920e7a38d00d6815d8d9ec6adc76a49f/2023_04_03_bmw_mena_the_electric_cars_i7.jpg"
+    },
+    {
+        "name": "Motorcycle",
+        "price": 8000,
+        "image": "https://www.suzuki.ca/wp-content/uploads/GSX-R1000RAM5_AV4_Right-scaled.jpg"
+    },
+    {
+        "name": "Electric Car (Tesla)",
+        "price": 60000,
+        "image": "https://cdn-www.pod-point.com/_800xAUTO_crop_center-center_none/tesla-model-s-lifestyle-image-2022.jpg?v=1708694302"
+    },
+    {
+        "name": "SUV",
+        "price": 35000,
+        "image": "https://www.gmenvolve.ca/content/dam/gmenvolve/na/ca/en/index/fleet/suvs-crossovers/01-images/suv-24trailblazer.jpg?imwidth=1200"
+    },
+    {
+        "name": "Pickup Truck",
+        "price": 40000,
+        "image": "https://img.autobytel.com/chrome/expanded/transparent/640/2023rmt11_640/2023rmt110348_640_03.png"
+    },
+    {
+        "name": "Golden Retriever Puppy",
+        "price": 500,
+        "image": "https://petsworld.in/cdn/shop/articles/Golden-Retriever-Puppies.jpg?v=1730873926"
+    },
+    {
+        "name": "Siamese Cat",
+        "price": 300,
+        "image": "https://www.metlifepetinsurance.com/content/dam/metlifecom/us/metlifepetinsurance/the-siamese-cat-min.webp"
+    },
+    {
+        "name": "Parrot",
+        "price": 200,
+        "image": "https://www.copadearbol.com/wp-content/uploads/2024/04/Depositphotos_264538190_XL-1.jpg"
+    },
+    {
+        "name": "Hamster",
+        "price": 80,
+        "image": "https://assets.petco.com/petco/image/upload/f_auto,q_auto/hamster-care-sheet-hero"
+    },
+    {
+        "name": "Rabbit",
+        "price": 100,
+        "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/03/28/11/cute-rabbit.jpg"
+    },
+    {
+        "name": "Betta Fish",
+        "price": 20,
+        "image": "https://www.thesprucepets.com/thmb/7YGQUU_FYAd2XCNmnW_9_jKcDZU=/5762x0/filters:no_upscale():strip_icc()/siamese-fighting-fish-bettas-1378308-hero-f459084da1414308accde7e21001906c.jpg"
+    },
+    {
+        "name": "Tortoise",
+        "price": 240,
+        "image": "https://flukerfarms.com/product_images/uploaded_images/adobestock-73824864.jpeg"
+    },
+    {
+        "name": "Canary Bird",
+        "price": 30,
+        "image": "https://cdn.britannica.com/33/226533-050-404C15AF/Canary-on-pear-branch.jpg"
+    },
+    {
+        "name": "African Lion Cub",
+        "price": 5000,
+        "image": "https://media.nbcdfw.com/2024/01/Moja-2.jpg?quality=85&strip=all&resize=1200%2C675"
+    }
+]
