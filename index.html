@@ -3,49 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spend Ahmad's Money</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Movie Gallery</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
+        <h1>Movie Gallery</h1>
+<button id="goTopButton" style="display: none;">Go to Top</button>
+        <input type="text" id="searchInput" placeholder="Search for a movie..." />
+<iframe id="videoPlayer" style="display: none; width: 100%; height: 500px;"></iframe>
+        <ul id="allMoviesList"></ul>
 
-      <img src="https://media.istockphoto.com/id/492786318/photo/horizontal-portrait-of-young-smiling-arab-man.jpg?s=612x612&w=0&k=20&c=7mulWyrjh2tpmQVlZpQZ1kFj3yta_RKoBd9Y0lam8do=" alt="Ahmad" class="ahmad-photo">
-        <h1>Spend Ahmad's Money 💰</h1>
-        <div class="sticky-balance">
-    <h2>Balance: AED <span id="balance">100000000000</span></h2>
-</div>
-
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-
-        <div id="items-container"></div>
-
-        <div class="receipt">
-    <h2>Shopping Cart 🛒</h2>
-    <ul id="cart"></ul>
-    <hr>
-    <h3>Total Money Spent: AED <span id="total-spent">0</span></h3>
-</div>
-<button id="checkout-btn" style="font-size: 16px; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease-in-out; background: linear-gradient(135deg, #ff5e62, #ff9966); color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-    onmouseover="this.style.background='linear-gradient(135deg, #ff9966, #ff5e62)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 10px rgba(0, 0, 0, 0.15)';"
-    onmouseout="this.style.background='linear-gradient(135deg, #ff5e62, #ff9966)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
-    Checkout
-</button>
     </div>
-    <div id="checkout-modal" class="modal">
-        <div class="modal-content">
-            <span id="close-modal" class="close">&times;</span>
-            <h2>Checkout</h2>
-            <div id="checkout-items"></div>
-            <h3>Total: AED <span id="checkout-total">0</span></h3>
-            <button id="reset-btn" style="font-size: 16px; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease-in-out; background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-                onmouseover="this.style.background='linear-gradient(135deg, #0072ff, #00c6ff)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 10px rgba(0, 0, 0, 0.15)';"
-                onmouseout="this.style.background='linear-gradient(135deg, #00c6ff, #0072ff)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
-                Reset
-            </button>
-        </div>
-    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

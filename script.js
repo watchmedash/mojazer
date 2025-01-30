@@ -1,277 +1,145 @@
-let balance = 100000000000;
-let totalSpent = 0;
-let cart = {};
+const API_KEY = "4f599baa15d072c9de346b2816a131b8";
+const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
-const checkoutBtn = document.getElementById("checkout-btn");
-const checkoutModal = document.getElementById("checkout-modal");
-const closeModalBtn = document.getElementById("close-modal");
-const resetBtn = document.getElementById("reset-btn");
-const checkoutItemsElement = document.getElementById("checkout-items");
-const checkoutTotalElement = document.getElementById("checkout-total");
-const balanceElement = document.getElementById("balance");
-const itemsContainer = document.getElementById("items-container");
-const cartElement = document.getElementById("cart");
-const totalSpentElement = document.getElementById("total-spent");
-const progressBar = document.getElementById("progress-bar");
+// API Endpoint for All Movies (Sorted by popularity)
+const ALL_MOVIES_URL = `${TMDB_BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
 
-fetch("items.json")
-    .then(response => response.json())
-    .then(items => {
-        items.forEach(item => createItemCard(item));
-    })
-    .catch(error => console.error("Error loading items:", error));
+const videoPlayer = document.getElementById("videoPlayer");
+const allMoviesList = document.getElementById("allMoviesList");
+const searchInput = document.getElementById("searchInput");
 
-// Function to format amounts (K, M, B) for receipt only
-function formatAmount(amount) {
-    if (amount >= 1e9) {
-        return (amount / 1e9).toFixed(2) + 'B'; // Billion
-    } else if (amount >= 1e6) {
-        return (amount / 1e6).toFixed(2) + 'M'; // Million
-    } else if (amount >= 1e3) {
-        return (amount / 1e3).toFixed(0) + 'K'; // Thousand
-    } else {
-        return amount; // Less than 1K
+let currentPage = 1; // Keep track of loaded pages
+let loading = false; // Prevent duplicate requests
+
+// Placeholder image for missing posters
+const placeholderImage = "https://via.placeholder.com/200x300?text=No+Image";
+
+// Native banner script
+const banners = [
+    {
+        type: 'native-banner',
+        html: `
+        <script async="async" data-cfasync="false" src="//perilastronaut.com/d5a998a62e67ff5acb874aab36d07ef9/invoke.js"></script>
+<div id="container-d5a998a62e67ff5acb874aab36d07ef9"></div>
+        `
     }
+];
+
+// Function to Randomly Insert Banners into Movie List
+function addRandomBanners(movies) {
+    const updatedMovies = [...movies]; // Create a copy of the movie list
+    const bannerCount = Math.floor(Math.random() * 3) + 1; // Random number of banners (1 to 3)
+
+    for (let i = 0; i < bannerCount; i++) {
+        const randomIndex = Math.floor(Math.random() * updatedMovies.length); // Random index for insertion
+        const randomBanner = banners[Math.floor(Math.random() * banners.length)]; // Select random banner
+        updatedMovies.splice(randomIndex, 0, randomBanner); // Insert native banner
+    }
+
+    return updatedMovies;
 }
 
-function createItemCard(item) {
-    const div = document.createElement("div");
-    div.className = "item";
-
-    const img = document.createElement("img");
-    img.src = item.image;
-    img.alt = item.name;
-
-    const name = document.createElement("p");
-    name.className = "item-name";
-    name.textContent = item.name;
-
-    const price = document.createElement("p");
-    price.className = "item-price";
-    price.textContent = `AED ${item.price.toLocaleString()}`;
-
-    const input = document.createElement("input");
-    input.type = "number";
-    input.min = "1";
-    input.value = "1";
-
-    const btn = document.createElement("button");
-    btn.textContent = "Buy";
-    btn.onclick = () => buyItem(item, input.value);
-
-    div.appendChild(img);
-    div.appendChild(name);
-    div.appendChild(price);
-    div.appendChild(input);
-    div.appendChild(btn);
-    itemsContainer.appendChild(div);
-}
-
-function buyItem(item, quantity) {
-    quantity = parseInt(quantity) || 1;
-    let totalCost = item.price * quantity;
-
-    if (balance >= totalCost) {
-        let currentBalance = balance;
-        let newBalance = balance - totalCost;
-        let decreaseAmount = Math.ceil((currentBalance - newBalance) / 50); // Smooth decrease steps
-
-        let balanceInterval = setInterval(() => {
-            if (currentBalance > newBalance) {
-                currentBalance -= decreaseAmount;
-                if (currentBalance < newBalance) {
-                    currentBalance = newBalance;
-                }
-                balanceElement.textContent = currentBalance.toLocaleString();
-            } else {
-                clearInterval(balanceInterval);
+// Function to Fetch & Display Movies
+function fetchMovies(url, listElement, page = 1) {
+    fetch(`${url}&page=${page}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch data");
             }
-        }, 20); // Speed of decrease
+            return response.json();
+        })
+        .then(data => {
+            console.log("Fetched Data:", data); // Log the entire data response
 
-        balance = newBalance;
-        totalSpent += totalCost;
+            // Check if movies are returned
+            if (data.results && data.results.length > 0) {
+                let movies = data.results.map(movie => {
+                    const posterPath = movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : placeholderImage;
+                    return {
+                        title: movie.title,
+                        id: movie.id,
+                        poster: posterPath,
+                        vote_average: movie.vote_average,
+                        release_date: movie.release_date,
+                        description: movie.overview // Get the description of the movie
+                    };
+                });
 
-        // Update total spent with smooth effect
-        let currentSpent = totalSpent - totalCost;
-        let spentInterval = setInterval(() => {
-            if (currentSpent < totalSpent) {
-                currentSpent += decreaseAmount;
-                if (currentSpent > totalSpent) {
-                    currentSpent = totalSpent;
-                }
-                totalSpentElement.textContent = currentSpent.toLocaleString();
+                // Add random banners to the movie list
+                movies = addRandomBanners(movies);
+
+                // Render movies and banners
+                movies.forEach(item => {
+                    let listItem = document.createElement("li");
+
+                    if (item.type === 'native-banner') {
+                        listItem.classList.add("banner");
+                        listItem.innerHTML = item.html;
+                    } else {
+                        listItem.innerHTML = `
+                            <img src="${item.poster}" alt="${item.title}">
+                            <div class="movie-info">
+                                <span class="movie-title">${item.title}</span>
+                                <span class="movie-details">
+                                    ⭐ ${item.vote_average.toFixed(1)} | 📅 ${item.release_date.split('-')[0]}
+                                </span>
+                                <p class="movie-description">${item.description}</p> <!-- Movie Description -->
+                            </div>
+                        `;
+
+                        // Add click event to scroll to video player and load the correct video
+                        listItem.addEventListener("click", () => {
+                            videoPlayer.src = `https://vidsrc.me/embed/movie/${item.id}`;
+                            videoPlayer.style.display = "block"; // Show the video player when movie is selected
+                            window.scrollTo({
+                                top: videoPlayer.offsetTop - 50, // Adjust scroll position
+                                behavior: "smooth" // Smooth scroll
+                            });
+                        });
+                    }
+
+                    listElement.appendChild(listItem);
+                });
             } else {
-                clearInterval(spentInterval);
+                console.log("No movies found in response.");
             }
-        }, 20);
 
-        updateProgressBar();
+            loading = false; // Allow more requests
+        })
+        .catch(error => {
+            console.error("Error fetching movies:", error);
+            loading = false; // Allow more requests even if an error occurs
+        });
+}
 
-        if (cart[item.name]) {
-            cart[item.name].quantity += quantity;
-        } else {
-            cart[item.name] = { price: item.price, quantity: quantity };
-        }
-        updateCartDisplay();
+// Function to Search Movies by Title
+function searchMovies(query) {
+    // Clear the movie list before searching
+    allMoviesList.innerHTML = '';
+
+    const SEARCH_URL = `${TMDB_BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1`;
+
+    fetchMovies(SEARCH_URL, allMoviesList);
+}
+
+// Fetch First Page of All Movies
+fetchMovies(ALL_MOVIES_URL, allMoviesList, currentPage);
+
+// Infinite Scroll for "All Movies"
+window.addEventListener("scroll", () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 && !loading) {
+        loading = true;
+        currentPage++;
+        fetchMovies(ALL_MOVIES_URL, allMoviesList, currentPage);
+    }
+});
+
+// Search Input Event
+searchInput.addEventListener("input", (e) => {
+    const query = e.target.value.trim();
+    if (query) {
+        searchMovies(query); // Search movies by title
     } else {
-        alert("Not enough money!");
+        fetchMovies(ALL_MOVIES_URL, allMoviesList, currentPage); // Reset to all movies if search is empty
     }
-}
-
-
-function updateCartDisplay() {
-    cartElement.innerHTML = "";
-    for (let itemName in cart) {
-        let item = cart[itemName];
-        const listItem = document.createElement("li");
-
-        const itemDetails = document.createElement("div");
-        let formattedTotal = formatAmount(item.price * item.quantity);
-        itemDetails.textContent = `${itemName} AED ${item.price.toLocaleString()} x${item.quantity} = AED ${formattedTotal}`;
-        listItem.appendChild(itemDetails);
-
-        const removeDiv = document.createElement("div");
-        const removeInput = document.createElement("input");
-        removeInput.className = "quantity-input";
-        removeInput.type = "number";
-        removeInput.min = "1";
-        removeInput.max = item.quantity;
-        removeInput.value = "1";
-
-        const removeBtn = document.createElement("button");
-        removeBtn.className = "remove-btn";
-        removeBtn.textContent = "-";
-        removeBtn.onclick = () => removeItem(itemName, removeInput.value);
-
-        removeDiv.appendChild(removeInput);
-        removeDiv.appendChild(removeBtn);
-        listItem.appendChild(removeDiv);
-
-        cartElement.appendChild(listItem);
-    }
-}
-
-function removeItem(itemName, quantityToRemove) {
-    quantityToRemove = parseInt(quantityToRemove) || 1;
-    const item = cart[itemName];
-
-    if (item.quantity >= quantityToRemove) {
-        item.quantity -= quantityToRemove;
-        if (item.quantity === 0) {
-            delete cart[itemName];
-        }
-
-        balance += item.price * quantityToRemove;
-        totalSpent -= item.price * quantityToRemove;
-
-        balanceElement.textContent = balance.toLocaleString();
-        totalSpentElement.textContent = totalSpent.toLocaleString();
-        updateProgressBar();
-        updateCartDisplay();
-    } else {
-        alert("You don't have enough of this item to remove!");
-    }
-}
-
-function updateProgressBar() {
-    let percentage = (totalSpent / 100000000000) * 100;
-    progressBar.style.width = percentage + "%";
-}
-
-// Function to update the receipt with formatted totals
-function updateReceipt() {
-    let receiptHTML = '';
-    let totalAmount = 0;
-
-    for (let itemName in cart) {
-        const item = cart[itemName];
-        let itemTotal = item.price * item.quantity;
-        totalAmount += itemTotal;
-
-        // Format totals for receipt (using short term notation)
-        let formattedItemTotal = formatAmount(itemTotal);
-
-        receiptHTML += `
-            <div class="receipt-item">
-                <span class="item-name">${itemName}</span>
-                <span class="item-price">AED ${item.price.toLocaleString()}</span>
-                <span class="item-quantity">x${item.quantity}</span>
-                <span class="item-total">= AED ${formattedItemTotal}</span>
-            </div>
-        `;
-    }
-
-    // Format the grand total for receipt
-    let formattedTotalAmount = formatAmount(totalAmount);
-    receiptHTML += `
-        <div class="receipt-total">
-            <span>Total: AED ${formattedTotalAmount}</span>
-        </div>
-    `;
-
-    document.getElementById('receipt').innerHTML = receiptHTML;
-}
-
-function openCheckoutModal() {
-    // Display the modal
-    checkoutModal.style.display = "block";
-
-    // Show the items in the cart
-    let receiptHTML = '';
-    let totalAmount = 0;
-
-    for (let itemName in cart) {
-        const item = cart[itemName];
-        let itemTotal = item.price * item.quantity;
-        totalAmount += itemTotal;
-
-        let formattedItemTotal = formatAmount(itemTotal);
-
-        receiptHTML += `
-            <div class="checkout-item">
-                <span class="item-name">${itemName}</span>
-                <span class="item-price">AED ${item.price.toLocaleString()}</span>
-                <span class="item-quantity">x${item.quantity}</span>
-                <span class="item-total">= AED ${formattedItemTotal}</span>
-            </div>
-        `;
-    }
-
-    // Format the total amount without shortening
-    let formattedTotalAmount = totalAmount.toLocaleString();  // Full number format here
-    checkoutTotalElement.textContent = `AED ${formattedTotalAmount}`;
-    checkoutItemsElement.innerHTML = receiptHTML;
-}
-
-
-function closeCheckoutModal() {
-    checkoutModal.style.display = "none";
-}
-
-function resetEverything() {
-
-    balance = 100000000000;
-    totalSpent = 0;
-    cart = {};
-
-    balanceElement.textContent = balance.toLocaleString();
-    totalSpentElement.textContent = totalSpent.toLocaleString();
-    updateProgressBar();
-    updateCartDisplay();
-
-    window.scrollTo(0, 0);
-
-    closeCheckoutModal();
-}
-
-checkoutBtn.addEventListener("click", openCheckoutModal);
-
-closeModalBtn.addEventListener("click", closeCheckoutModal);
-
-resetBtn.addEventListener("click", resetEverything);
-
-window.onclick = function(event) {
-    if (event.target == checkoutModal) {
-        closeCheckoutModal();
-    }
-};
+});

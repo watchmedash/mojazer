@@ -1,0 +1,152 @@
+/* Dark Theme Body */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Video Player Container */
+.video-container {
+    position: relative;
+    width: 100%; /* Ensures responsiveness */
+    padding-bottom: 56.25%; /* Aspect ratio 16:9 (height/width * 100) */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+    max-width: 100%; /* Prevents overflow */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+/* Playlist Styling */
+.playlist {
+    margin-top: 20px;
+    text-align: left;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    background: #222;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+li img {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Hover Effect on Movie List Items */
+li:hover {
+    background: #333;
+}
+
+/* Movie Title Styling */
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    color: #ddd;
+}
+
+.movie-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.movie-details {
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+/* Search Bar Styling */
+#searchInput {
+    width: 80%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #76baff;
+}
+
+/* Video Player Styling */
+#videoPlayer {
+    display: none;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+/* Scroll-to-Top Button (Optional) */
+#goToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #76baff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    display: none; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+#goToTop:hover {
+    background-color: #5687b3;
+}
+.movie-description {
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 5px;
+    padding: 0 10px;
+    text-align: left;
+    max-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allow the text to wrap to new lines */
+    word-wrap: break-word; /* Ensure long words break properly */
+}
+
+li:hover .movie-description {
+    max-height: none; /* Expand the description when hovered */
+    white-space: normal; /* Allow multi-line text */
+}
