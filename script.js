@@ -12,15 +12,23 @@ let currentPage = 1; // Keep track of loaded pages
 let loading = false; // Prevent duplicate requests
 
 // Placeholder image for missing posters
-const placeholderImage = "https://via.placeholder.com/200x300?text=No+Image";
+const placeholderImage = "https://i.postimg.cc/d3YGThwG/AD.png";
 
 // Native banner script
 const banners = [
     {
         type: 'native-banner',
         html: `
-        <script async="async" data-cfasync="false" src="//perilastronaut.com/d5a998a62e67ff5acb874aab36d07ef9/invoke.js"></script>
-<div id="container-d5a998a62e67ff5acb874aab36d07ef9"></div>
+        <script type="text/javascript">
+        	atOptions = {
+        		'key' : '7d4b7c59b383e616e29c9776d86bfb63',
+        		'format' : 'iframe',
+        		'height' : 90,
+        		'width' : 728,
+        		'params' : {}
+        	};
+        </script>
+        <script type="text/javascript" src="//perilastronaut.com/7d4b7c59b383e616e29c9776d86bfb63/invoke.js"></script>
         `
     }
 ];
