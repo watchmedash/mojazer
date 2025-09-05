@@ -175,7 +175,7 @@
                 console.log(`✅ Joined as player: ${myPlayerId}`);
 
                 // Force player to spawn position
-                $gamePlayer.reserveTransfer($gameMap.mapId(), data.x, data.y, 2, 0);
+              //   $gamePlayer.reserveTransfer($gameMap.mapId(), data.x, data.y, 2, 0);
 
                 // Welcome message
                 $gameMessage.add(`👋 Welcome ${finalPlayerName}!`);
