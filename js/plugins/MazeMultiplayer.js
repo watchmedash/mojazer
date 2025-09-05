@@ -266,7 +266,7 @@
                 directionFix: false,
                 image: {
                     characterIndex: 0,
-                    characterName: $gamePlayer._characterName,
+                    characterName: 'Dash',
                     direction: 2,
                     pattern: 0
                 },
