@@ -1,6 +1,6 @@
 /*:
  * @target MV
- * @plugindesc Maze Multiplayer v1.0.4
+ * @plugindesc Maze Multiplayer v1.0.6
  * @author YourName
  * @param serverUrl
  * @text Server URL
@@ -40,38 +40,36 @@
 
     const finalPlayerName = playerName || 'Player' + Math.floor(Math.random() * 1000);
 
-    console.log('🎮 Maze Multiplayer Plugin Loaded');
-    console.log(`🎯 Target Map ID: ${mazeMapId}`);
-    console.log(`🏷️ Player Name: ${finalPlayerName}`);
-    console.log(`🔗 Server URL: ${serverUrl}`);
+    console.log('Maze Multiplayer Plugin Loaded');
+    console.log(`Target Map ID: ${mazeMapId}`);
+    console.log(`Player Name: ${finalPlayerName}`);
+    console.log(`Server URL: ${serverUrl}`);
 
     window.triggerMazeCompletion = function() {
-        console.log('🏁 Maze completion triggered!');
+        console.log('Maze completion triggered!');
 
         if (isConnected && ws && ws.readyState === WebSocket.OPEN && myPlayerId) {
             ws.send(JSON.stringify({
                 type: 'completed'
             }));
-
-            $gameMessage.add("🎉 Victory! Checking if you're first...");
+            $gameMessage.add("Victory! Checking if you're first...");
             $gamePlayer._moveSpeed = 0;
-
         } else {
-            $gameMessage.add("🎉 You escaped the maze! 🎉");
-            $gameMessage.add("🚫 (Playing in single-player mode)");
-            console.log('⚠️ Not connected to multiplayer server');
+            $gameMessage.add("You escaped the maze!");
+            $gameMessage.add("(Playing in single-player mode)");
+            console.log('Not connected to multiplayer server');
         }
     };
 
     function connectToServer() {
         if (connectionAttempts >= maxRetries || isConnecting || isConnected) {
             if (isConnected) {
-                console.log('✅ Already connected, skipping connection attempt');
+                console.log('Already connected, skipping connection attempt');
             } else if (isConnecting) {
-                console.log('⏳ Connection already in progress, skipping');
+                console.log('Connection already in progress, skipping');
             } else {
-                console.log('❌ Max connection attempts reached. Playing in single-player mode.');
-                $gameMessage.add('🚫 Multiplayer unavailable - Playing solo');
+                console.log('Max connection attempts reached. Playing in single-player mode.');
+                $gameMessage.add('Multiplayer unavailable - Playing solo');
             }
             return;
         }
@@ -79,12 +77,12 @@
         isConnecting = true;
 
         try {
-            console.log(`🔄 Connecting to ${serverUrl}... (attempt ${connectionAttempts + 1})`);
+            console.log(`Connecting to ${serverUrl}... (attempt ${connectionAttempts + 1})`);
             ws = new WebSocket(serverUrl);
             connectionAttempts++;
 
             ws.onopen = () => {
-                console.log('✅ Connected to multiplayer server!');
+                console.log('Connected to multiplayer server!');
                 isConnected = true;
                 isConnecting = false;
                 connectionAttempts = 0;
@@ -97,7 +95,7 @@
                 }));
 
                 if (isFirstConnection) {
-                    $gameMessage.add('🌐 Connected to multiplayer server!');
+                    $gameMessage.add('Connected to multiplayer server!');
                     isFirstConnection = false;
                 }
             };
@@ -107,12 +105,12 @@
                     const data = JSON.parse(event.data);
                     handleServerMessage(data);
                 } catch (error) {
-                    console.error('❌ Error parsing server message:', error);
+                    console.error('Error parsing server message:', error);
                 }
             };
 
             ws.onclose = (event) => {
-                console.log(`❌ Disconnected from server: ${event.code} - ${event.reason}`);
+                console.log(`Disconnected from server: ${event.code} - ${event.reason}`);
                 isConnected = false;
                 isConnecting = false;
                 stopPingPong();
@@ -121,11 +119,11 @@
                 removeAllOtherPlayerSprites();
 
                 if (event.code !== 1000 && event.code !== 1001) {
-                    $gameMessage.add('🔌 Connection lost - Attempting reconnect...');
+                    $gameMessage.add('Connection lost - Attempting reconnect...');
 
                     if (connectionAttempts < maxRetries) {
                         reconnectTimeout = setTimeout(() => {
-                            console.log('🔄 Attempting to reconnect...');
+                            console.log('Attempting to reconnect...');
                             connectToServer();
                         }, 5000);
                     }
@@ -133,14 +131,14 @@
             };
 
             ws.onerror = (error) => {
-                console.error('❌ WebSocket connection error:', error);
+                console.error('WebSocket connection error:', error);
                 isConnected = false;
                 isConnecting = false;
-                $gameMessage.add('⚠️ Connection error - Check your internet');
+                $gameMessage.add('Connection error - Check your internet');
             };
 
         } catch (error) {
-            console.error('❌ Failed to create WebSocket connection:', error);
+            console.error('Failed to create WebSocket connection:', error);
             isConnecting = false;
 
             if (connectionAttempts < maxRetries) {
@@ -153,21 +151,21 @@
         switch(data.type) {
             case 'joined':
                 myPlayerId = data.playerId;
-                console.log(`✅ Joined as player: ${myPlayerId}`);
+                console.log(`Joined as player: ${myPlayerId}`);
 
                 if ($gamePlayer.x !== data.x || $gamePlayer.y !== data.y) {
-                    console.log(`📍 Moving player to spawn: (${data.x}, ${data.y})`);
+                    console.log(`Moving player to spawn: (${data.x}, ${data.y})`);
                     $gamePlayer.setPosition(data.x, data.y);
                     $gamePlayer.setDirection(2);
                     $gamePlayer.refresh();
                 }
 
                 if (isFirstConnection) {
-                    $gameMessage.add(`👋 Welcome ${finalPlayerName}!`);
-                    $gameMessage.add(`🎯 Find the exit to win!`);
+                    $gameMessage.add(`Welcome ${finalPlayerName}!`);
+                    $gameMessage.add(`Find the exit to win!`);
 
                     if (data.totalPlayers > 1) {
-                        $gameMessage.add(`👥 ${data.totalPlayers} players competing!`);
+                        $gameMessage.add(`${data.totalPlayers} players competing!`);
                     }
                 }
                 break;
@@ -181,10 +179,10 @@
                     });
 
                     createOtherPlayerSprite(data.playerId, data.x, data.y, data.name);
-                    $gameMessage.add(`🆕 ${data.name} joined the maze!`);
+                    $gameMessage.add(`${data.name} joined the maze!`);
 
                     if (data.totalPlayers) {
-                        $gameMessage.add(`👥 Total players: ${data.totalPlayers}`);
+                        $gameMessage.add(`Total players: ${data.totalPlayers}`);
                     }
                 }
                 break;
@@ -203,10 +201,10 @@
                     const playerName = otherPlayers.get(data.playerId).name;
                     otherPlayers.delete(data.playerId);
                     removeOtherPlayerSprite(data.playerId);
-                    $gameMessage.add(`👋 ${playerName} left the maze`);
+                    $gameMessage.add(`${playerName} left the maze`);
 
                     if (data.totalPlayers !== undefined) {
-                        $gameMessage.add(`👥 Players remaining: ${data.totalPlayers}`);
+                        $gameMessage.add(`Players remaining: ${data.totalPlayers}`);
                     }
                 }
                 break;
@@ -215,27 +213,27 @@
                 $gamePlayer._moveSpeed = 4;
 
                 if (data.playerId === myPlayerId) {
-                    $gameMessage.add("🏆🎉 CONGRATULATIONS! 🎉🏆");
-                    $gameMessage.add("🥇 YOU ARE THE WINNER! 🥇");
-                    $gameMessage.add(`⏱️ Time: ${data.timeText || 'Unknown'}`);
-                    $gameMessage.add("💰 Contact the host for your reward!");
+                    $gameMessage.add("CONGRATULATIONS!");
+                    $gameMessage.add("YOU ARE THE WINNER!");
+                    $gameMessage.add(`Time: ${data.timeText || 'Unknown'}`);
+                    $gameMessage.add("Contact the host for your reward!");
 
                     try {
                         $gameSystem.playSe({name: 'Victory1', volume: 90, pitch: 100, pan: 0});
                     } catch (e) {}
 
                 } else {
-                    $gameMessage.add(`🏆 ${data.name} escaped first! 🏆`);
-                    $gameMessage.add(`⏱️ Winning time: ${data.timeText || 'Unknown'}`);
-                    $gameMessage.add("😔 Better luck next time!");
+                    $gameMessage.add(`${data.name} escaped first!`);
+                    $gameMessage.add(`Winning time: ${data.timeText || 'Unknown'}`);
+                    $gameMessage.add("Better luck next time!");
 
                     highlightWinner(data.playerId);
                 }
                 break;
 
             case 'serverShutdown':
-                $gameMessage.add('🛑 Server maintenance');
-                $gameMessage.add('🔄 Please refresh page soon');
+                $gameMessage.add('Server maintenance');
+                $gameMessage.add('Please refresh page soon');
                 break;
 
             case 'pong':
@@ -255,29 +253,20 @@
     }
 
     function createOtherPlayerSprite(playerId, x, y, name) {
-        if (!$gameMap._events) return;
-
         const playerIndex = Array.from(otherPlayers.keys()).indexOf(playerId);
         const eventId = 200 + playerIndex;
 
-        if ($gameMap._events[eventId]) {
-            delete $gameMap._events[eventId];
-            delete $dataMap.events[eventId];
-        }
-
-        const characterIndex = Math.floor(Math.random() * 8);
-
         const eventData = {
             id: eventId,
-            name: `Multiplayer_${playerId}`,
+            name: `Other_${playerId}`,
             x: x,
             y: y,
             pages: [{
                 conditions: {},
                 directionFix: false,
                 image: {
-                    characterIndex: characterIndex,
-                    characterName: 'Actor1',
+                    characterIndex: 0,
+                    characterName: $gamePlayer._characterName,
                     direction: 2,
                     pattern: 0
                 },
@@ -294,24 +283,10 @@
         };
 
         $dataMap.events[eventId] = eventData;
-
         const event = new Game_Event($gameMap.mapId(), eventId);
         $gameMap._events[eventId] = event;
 
-        if (SceneManager._scene instanceof Scene_Map && SceneManager._scene._spriteset) {
-            SceneManager._scene._spriteset.refresh();
-
-            try {
-                const sprite = new Sprite_Character(event);
-                SceneManager._scene._spriteset._characterSprites.push(sprite);
-                SceneManager._scene._spriteset._tilemap.addChild(sprite);
-            } catch (error) {
-                console.log('Using fallback sprite creation method');
-                SceneManager._scene._spriteset.refresh();
-            }
-        }
-
-        console.log(`👤 Created sprite for ${name} at (${x}, ${y}) with event ID ${eventId}`);
+        console.log(`Created sprite for ${name} at (${x}, ${y}) using same character`);
     }
 
     function updateOtherPlayerSprite(playerId, x, y, direction) {
@@ -322,7 +297,6 @@
         if (event) {
             event.setPosition(x, y);
             event.setDirection(direction);
-            event.refresh();
         }
     }
 
@@ -333,10 +307,6 @@
         if ($gameMap._events[eventId]) {
             delete $gameMap._events[eventId];
             delete $dataMap.events[eventId];
-
-            if (SceneManager._scene instanceof Scene_Map && SceneManager._scene._spriteset) {
-                SceneManager._scene._spriteset.refresh();
-            }
         }
     }
 
@@ -396,7 +366,7 @@
         _Scene_Map_onMapLoaded.call(this);
 
         if ($gameMap.mapId() === mazeMapId && !isConnected && !hasConnectedOnce && !isConnecting) {
-            console.log(`🎮 Entering maze map ${mazeMapId} - Connecting to multiplayer...`);
+            console.log(`Entering maze map ${mazeMapId} - Connecting to multiplayer...`);
             hasConnectedOnce = true;
             connectToServer();
         }
@@ -404,7 +374,7 @@
 
     const _Scene_Map_terminate = Scene_Map.prototype.terminate;
     Scene_Map.prototype.terminate = function() {
-        console.log('🚪 Leaving map - Disconnecting multiplayer...');
+        console.log('Leaving map - Disconnecting multiplayer...');
 
         if (reconnectTimeout) {
             clearTimeout(reconnectTimeout);
@@ -428,7 +398,7 @@
         _Scene_Map_terminate.call(this);
     };
 
-    console.log('✅ Maze Multiplayer Plugin Ready!');
-    console.log(`🎯 Will activate on map ${mazeMapId}`);
-    console.log(`🏁 Use triggerMazeCompletion() in your exit event`);
+    console.log('Maze Multiplayer Plugin Ready!');
+    console.log(`Will activate on map ${mazeMapId}`);
+    console.log('Use triggerMazeCompletion() in your exit event');
 })();
