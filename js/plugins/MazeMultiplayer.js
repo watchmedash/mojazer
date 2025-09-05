@@ -1,6 +1,6 @@
 /*:
  * @target MV
- * @plugindesc Maze Multiplayer v1.0.6
+ * @plugindesc Maze Multiplayer v1.0.7
  * @author YourName
  * @param serverUrl
  * @text Server URL
@@ -37,6 +37,7 @@
     let pingInterval = null;
     let hasConnectedOnce = false;
     let isFirstConnection = true;
+    let usedEventIds = new Set();
 
     const finalPlayerName = playerName || 'Player' + Math.floor(Math.random() * 1000);
 
@@ -253,19 +254,28 @@
     }
 
     function createOtherPlayerSprite(playerId, x, y, name) {
-        const playerIndex = Array.from(otherPlayers.keys()).indexOf(playerId);
-        const eventId = 200 + playerIndex;
+        // Find an available event ID starting from 500 to avoid conflicts
+        let eventId = 500;
+        while ($gameMap._events[eventId] || usedEventIds.has(eventId)) {
+            eventId++;
+            if (eventId > 600) {
+                console.log('ERROR: No available event IDs for other players');
+                return;
+            }
+        }
+
+        usedEventIds.add(eventId);
 
         const eventData = {
             id: eventId,
-            name: `Other_${playerId}`,
+            name: `OtherPlayer_${playerId}`,
             x: x,
             y: y,
             pages: [{
                 conditions: {},
                 directionFix: false,
                 image: {
-                    characterIndex: 0,
+                    characterIndex: Math.floor(Math.random() * 8),
                     characterName: 'Dash',
                     direction: 2,
                     pattern: 0
@@ -286,27 +296,36 @@
         const event = new Game_Event($gameMap.mapId(), eventId);
         $gameMap._events[eventId] = event;
 
-        console.log(`Created sprite for ${name} at (${x}, ${y}) using same character`);
+        // Store the event ID with the player
+        const player = otherPlayers.get(playerId);
+        if (player) {
+            player.eventId = eventId;
+        }
+
+        console.log(`Created sprite for ${name} at (${x}, ${y}) with event ID ${eventId}`);
     }
 
     function updateOtherPlayerSprite(playerId, x, y, direction) {
-        const playerIndex = Array.from(otherPlayers.keys()).indexOf(playerId);
-        const eventId = 200 + playerIndex;
-        const event = $gameMap._events[eventId];
-
-        if (event) {
-            event.setPosition(x, y);
-            event.setDirection(direction);
+        const player = otherPlayers.get(playerId);
+        if (player && player.eventId) {
+            const event = $gameMap._events[player.eventId];
+            if (event) {
+                event.setPosition(x, y);
+                event.setDirection(direction);
+            }
         }
     }
 
     function removeOtherPlayerSprite(playerId) {
-        const playerIndex = Array.from(otherPlayers.keys()).indexOf(playerId);
-        const eventId = 200 + playerIndex;
+        const player = otherPlayers.get(playerId);
+        if (player && player.eventId) {
+            const eventId = player.eventId;
 
-        if ($gameMap._events[eventId]) {
-            delete $gameMap._events[eventId];
-            delete $dataMap.events[eventId];
+            if ($gameMap._events[eventId]) {
+                delete $gameMap._events[eventId];
+                delete $dataMap.events[eventId];
+                usedEventIds.delete(eventId);
+            }
         }
     }
 
@@ -314,24 +333,26 @@
         otherPlayers.forEach((player, playerId) => {
             removeOtherPlayerSprite(playerId);
         });
+        usedEventIds.clear();
     }
 
     function highlightWinner(winnerId) {
-        const playerIndex = Array.from(otherPlayers.keys()).indexOf(winnerId);
-        const eventId = 200 + playerIndex;
-        const event = $gameMap._events[eventId];
+        const player = otherPlayers.get(winnerId);
+        if (player && player.eventId) {
+            const event = $gameMap._events[player.eventId];
 
-        if (event) {
-            let blinkCount = 0;
-            const blinkInterval = setInterval(() => {
-                if (event && blinkCount < 6) {
-                    event._opacity = event._opacity === 255 ? 128 : 255;
-                    blinkCount++;
-                } else {
-                    clearInterval(blinkInterval);
-                    if (event) event._opacity = 255;
-                }
-            }, 300);
+            if (event) {
+                let blinkCount = 0;
+                const blinkInterval = setInterval(() => {
+                    if (event && blinkCount < 6) {
+                        event._opacity = event._opacity === 255 ? 128 : 255;
+                        blinkCount++;
+                    } else {
+                        clearInterval(blinkInterval);
+                        if (event) event._opacity = 255;
+                    }
+                }, 300);
+            }
         }
     }
 
@@ -394,6 +415,7 @@
         otherPlayers.clear();
         hasConnectedOnce = false;
         isFirstConnection = true;
+        usedEventIds.clear();
 
         _Scene_Map_terminate.call(this);
     };
