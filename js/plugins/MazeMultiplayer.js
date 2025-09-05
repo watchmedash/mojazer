@@ -1,6 +1,6 @@
 /*:
  * @target MV
- * @plugindesc Maze Multiplayer v1.0.2
+ * @plugindesc Maze Multiplayer v1.0.3
  * @author YourName
  * @param serverUrl
  * @text Server URL
@@ -54,10 +54,13 @@
     let myPlayerId = null;
     let otherPlayers = new Map();
     let isConnected = false;
+    let isConnecting = false; // NEW: Prevent multiple connection attempts
     let connectionAttempts = 0;
     let maxRetries = 5;
     let reconnectTimeout = null;
     let pingInterval = null;
+    let hasConnectedOnce = false; // NEW: Prevent reconnection on map reloads
+    let isFirstConnection = true; // NEW: Track if this is the initial connection
 
     // Generate player name
     const finalPlayerName = playerName || 'Player' + Math.floor(Math.random() * 1000);
@@ -93,11 +96,20 @@
 
     // Connect to multiplayer server
     function connectToServer() {
-        if (connectionAttempts >= maxRetries) {
-            console.log('❌ Max connection attempts reached. Playing in single-player mode.');
-            $gameMessage.add('🚫 Multiplayer unavailable - Playing solo');
+        // FIXED: Prevent multiple simultaneous connections
+        if (connectionAttempts >= maxRetries || isConnecting || isConnected) {
+            if (isConnected) {
+                console.log('✅ Already connected, skipping connection attempt');
+            } else if (isConnecting) {
+                console.log('⏳ Connection already in progress, skipping');
+            } else {
+                console.log('❌ Max connection attempts reached. Playing in single-player mode.');
+                $gameMessage.add('🚫 Multiplayer unavailable - Playing solo');
+            }
             return;
         }
+
+        isConnecting = true; // Prevent multiple simultaneous attempts
 
         try {
             console.log(`🔄 Connecting to ${serverUrl}... (attempt ${connectionAttempts + 1})`);
@@ -107,6 +119,7 @@
             ws.onopen = () => {
                 console.log('✅ Connected to multiplayer server!');
                 isConnected = true;
+                isConnecting = false; // Reset connecting flag
                 connectionAttempts = 0; // Reset on success
 
                 // Start heartbeat
@@ -118,7 +131,11 @@
                     name: finalPlayerName
                 }));
 
-                $gameMessage.add('🌐 Connected to multiplayer server!');
+                // Only show connection message on first connect
+                if (isFirstConnection) {
+                    $gameMessage.add('🌐 Connected to multiplayer server!');
+                    isFirstConnection = false;
+                }
             };
 
             ws.onmessage = (event) => {
@@ -133,34 +150,38 @@
             ws.onclose = (event) => {
                 console.log(`❌ Disconnected from server: ${event.code} - ${event.reason}`);
                 isConnected = false;
+                isConnecting = false; // Reset connecting flag
                 stopPingPong();
 
                 // Clean up other players
                 otherPlayers.clear();
                 removeAllOtherPlayerSprites();
 
-                // Show disconnection message
-                if (event.code !== 1000) {
+                // Only show disconnection message for unexpected disconnects
+                if (event.code !== 1000 && event.code !== 1001) {
                     $gameMessage.add('🔌 Connection lost - Attempting reconnect...');
-                }
 
-                // Try to reconnect if not intentional disconnect
-                if (event.code !== 1000 && connectionAttempts < maxRetries) {
-                    reconnectTimeout = setTimeout(() => {
-                        console.log('🔄 Attempting to reconnect...');
-                        connectToServer();
-                    }, 3000);
+                    // Try to reconnect if not intentional disconnect
+                    if (connectionAttempts < maxRetries) {
+                        reconnectTimeout = setTimeout(() => {
+                            console.log('🔄 Attempting to reconnect...');
+                            connectToServer();
+                        }, 5000); // Increased delay to prevent rapid reconnection
+                    }
                 }
             };
 
             ws.onerror = (error) => {
                 console.error('❌ WebSocket connection error:', error);
                 isConnected = false;
+                isConnecting = false; // Reset connecting flag
                 $gameMessage.add('⚠️ Connection error - Check your internet');
             };
 
         } catch (error) {
             console.error('❌ Failed to create WebSocket connection:', error);
+            isConnecting = false; // Reset connecting flag
+
             if (connectionAttempts < maxRetries) {
                 setTimeout(connectToServer, 5000);
             }
@@ -174,15 +195,23 @@
                 myPlayerId = data.playerId;
                 console.log(`✅ Joined as player: ${myPlayerId}`);
 
-                // Force player to spawn position
-              //   $gamePlayer.reserveTransfer($gameMap.mapId(), data.x, data.y, 2, 0);
+                // FIXED: Only transfer if not already at the correct position to prevent map reload loop
+                if ($gamePlayer.x !== data.x || $gamePlayer.y !== data.y) {
+                    console.log(`📍 Moving player to spawn: (${data.x}, ${data.y})`);
+                    // Use setPosition instead of reserveTransfer to prevent map reload
+                    $gamePlayer.setPosition(data.x, data.y);
+                    $gamePlayer.setDirection(2); // Face down
+                    $gamePlayer.refresh();
+                }
 
-                // Welcome message
-                $gameMessage.add(`👋 Welcome ${finalPlayerName}!`);
-                $gameMessage.add(`🎯 Find the exit to win!`);
+                // Welcome message (only show once)
+                if (isFirstConnection) {
+                    $gameMessage.add(`👋 Welcome ${finalPlayerName}!`);
+                    $gameMessage.add(`🎯 Find the exit to win!`);
 
-                if (data.totalPlayers > 1) {
-                    $gameMessage.add(`👥 ${data.totalPlayers} players competing!`);
+                    if (data.totalPlayers > 1) {
+                        $gameMessage.add(`👥 ${data.totalPlayers} players competing!`);
+                    }
                 }
                 break;
 
@@ -237,7 +266,11 @@
                     $gameMessage.add("💰 Contact the host for your reward!");
 
                     // Victory sound effect (if you have one)
-                    $gameSystem.playSe({name: 'Victory1', volume: 90, pitch: 100, pan: 0});
+                    try {
+                        $gameSystem.playSe({name: 'Victory1', volume: 90, pitch: 100, pan: 0});
+                    } catch (e) {
+                        // Ignore if sound doesn't exist
+                    }
 
                 } else {
                     // Someone else won
@@ -256,8 +289,7 @@
                 break;
 
             case 'pong':
-                // Heartbeat response
-                console.log('💗 Server heartbeat OK');
+                // Heartbeat response (don't log to reduce console spam)
                 break;
         }
     }
@@ -383,6 +415,8 @@
 
     // Ping-pong heartbeat
     function startPingPong() {
+        if (pingInterval) clearInterval(pingInterval); // Clear existing interval
+
         pingInterval = setInterval(() => {
             if (isConnected && ws && ws.readyState === WebSocket.OPEN) {
                 ws.send(JSON.stringify({ type: 'ping' }));
@@ -407,14 +441,15 @@
         }
     };
 
-    // Auto-connect when entering the maze map
+    // FIXED: Auto-connect when entering the maze map (prevents connection loop)
     const _Scene_Map_onMapLoaded = Scene_Map.prototype.onMapLoaded;
     Scene_Map.prototype.onMapLoaded = function() {
         _Scene_Map_onMapLoaded.call(this);
 
-        // Only connect on the specified maze map
-        if ($gameMap.mapId() === mazeMapId && !isConnected) {
+        // Only connect ONCE per game session on the specified maze map
+        if ($gameMap.mapId() === mazeMapId && !isConnected && !hasConnectedOnce && !isConnecting) {
             console.log(`🎮 Entering maze map ${mazeMapId} - Connecting to multiplayer...`);
+            hasConnectedOnce = true; // Prevent multiple connections
             connectToServer();
         }
     };
@@ -438,11 +473,14 @@
             ws.close(1000, 'Map change');
         }
 
-        // Reset connection state
+        // Reset connection state for potential re-entry
         isConnected = false;
+        isConnecting = false;
         connectionAttempts = 0;
         myPlayerId = null;
         otherPlayers.clear();
+        hasConnectedOnce = false; // Allow reconnection if player re-enters maze
+        isFirstConnection = true; // Reset for next session
 
         _Scene_Map_terminate.call(this);
     };
